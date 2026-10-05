@@ -69,12 +69,80 @@ const MOCK={default:"This is a placeholder response. The real Architect will be 
 'Help me plan my next steps.':"Placeholder response (AI not connected).\n\n1. Add your grade and courses.\n2. Calculate your Top 6.\n3. Shortlist programs to research.\n4. Come back and we'll map out what to do next."};
 const SUG=["What should I focus on in Grade 11?","How can I improve my university chances?","I'm interested in business. What should I look at?","What should I do if I don't know what I want to study?","Help me plan my next steps."];
 const R={
-'':()=>`<section class="hero"><div class="eyebrow">COURSEMAXXING</div><h1>Make smarter decisions about school, university, and your future.</h1><p>Coursemaxxing helps students plan their academics, explore university options, understand what to focus on, and make better decisions about what comes next.</p><div class="row"><a class="btn" href="#/${S.in?'dashboard':'signup'}">Get Started</a><a class="btn o" href="#/explore">Explore Coursemaxxing</a></div></section>
-<section class="sec"><h2>Who we are</h2><p style="max-width:660px">Coursemaxxing is one place for students to figure out what they should be doing for school, university, and their future.</p></section>
-<section class="sec"><h2>How it works</h2><div class="steps">${[['Build your profile','Add your grade, courses and goals.'],['Explore your options','Browse programs, courses and strategies.'],['Plan your next steps','Use tools like the Top 6 Calculator.'],['Ask The Architect','Get strategic guidance for your situation.']].map((s,i)=>`<div class="card"><div class="num">${i+1}</div><h3>${s[0]}</h3><p style="margin:0">${s[1]}</p></div>`).join('')}</div></section>
-<section class="sec"><h2>Features</h2><div class="grid">${card('The Architect','Strategic academic planning assistant.','#/architect',SOON.replace('Coming soon','Preview'))}${card('Top 6 Calculator','Calculate your Top 6 average and compare to a target.','#/top6','<span class="tag g">Live</span>')}${card('University Exploration','Explore example programs.','#/universities',SOON)}${card('Course Planning','Map out your courses.','#/courses',SOON)}${card('Student Portfolio','Keep your academic story in one place.','#/portfolio',SOON)}${card('Academic Planning','Goals and next steps.','#/dashboard',SOON)}${card('School & Study Strategies','Practical guidance.','#/tools',SOON)}</div></section>
-<section class="sec"><h2>Choose your grade</h2><div class="grades">${[8,9,10,11,12].map(g=>`<button class="gr ${S.grade==g?'on':''}" onclick="S.grade=${g};save();go('${S.in?'dashboard':'signup'}')">Grade ${g}</button>`).join('')}</div></section>
-<section class="sec cta"><h2>Create your Coursemaxxing profile</h2><p>Free to start. We only ask for what we need.</p><a class="btn" href="#/signup">Get Started</a></section>`,
+'':()=>`<section class="hero">
+<div class="eyebrow">COURSEMAXXING</div>
+<h1>Make smarter decisions about school, university, and your future.</h1>
+<p>Coursemaxxing helps students plan their academics, explore university options, understand what to focus on, and make better decisions about what comes next.</p>
+<div class="row">
+<a class="btn" href="#/${S.in?'dashboard':'signup'}">Get Started</a>
+<a class="btn o" href="#/explore">Explore Coursemaxxing</a>
+</div>
+</section>
+
+<section class="sec about">
+<div class="about-head">
+<div>
+<div class="eyebrow">WHO WE ARE</div>
+<h2>Helping students figure out what's next.</h2>
+</div>
+<div>
+<p>Coursemaxxing is one place for students to figure out what they should be doing for school, university, and their future.</p>
+<p>I built Coursemaxxing from my own experience as a high school student. I've been fortunate to have an older sibling who helped me navigate the questions that come with high school — what courses to take, how to prepare for university, what opportunities matter, and what I should actually be doing to build my future.</p>
+<p>But I realized that not every student has someone they can ask all of those questions to. I wanted to create the resource I wish every student had: one place where you can figure things out, make smarter academic decisions, and get guidance as you work toward your future.</p>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="eyebrow">HOW IT WORKS</div>
+<h2>From questions to a plan.</h2>
+<p>Coursemaxxing brings the important pieces of academic planning together in one place.</p>
+
+<div class="steps">
+${[
+['01','Build your profile','Add your grade, courses, goals and interests.'],
+['02','Explore your options','Understand courses, universities, careers and opportunities.'],
+['03','Plan your next steps','Use tools and guidance to make smarter decisions.'],
+['04','Ask The Architect','Get strategic guidance based on your situation.']
+].map(s=>`<div class="card step-card">
+<div class="num">${s[0]}</div>
+<h3>${s[1]}</h3>
+<p style="margin:0">${s[2]}</p>
+</div>`).join('')}
+</div>
+</section>
+
+<section class="sec feature-section">
+<div class="eyebrow">WHAT YOU CAN DO</div>
+<h2>Everything you need to plan ahead.</h2>
+<p>Start with what you need now. Build from there.</p>
+
+<div class="grid">
+${card('The Architect','Strategic academic planning assistant.','#/architect',SOON.replace('Coming soon','Preview'))}
+${card('Top 6 Calculator','Calculate your Top 6 average and compare to a target.','#/top6','<span class="tag g">Live</span>')}
+${card('University Exploration','Explore example programs.','#/universities',SOON)}
+${card('Course Planning','Map out your courses.','#/courses',SOON)}
+${card('Student Portfolio','Keep your academic story in one place.','#/portfolio',SOON)}
+${card('Academic Planning','Goals and next steps.','#/dashboard',SOON)}
+${card('School & Study Strategies','Practical guidance.','#/tools',SOON)}
+</div>
+</section>
+
+<section class="sec grade-section">
+<div class="eyebrow">START WHERE YOU ARE</div>
+<h2>Choose your grade.</h2>
+<p>Your priorities change as you move through high school.</p>
+
+<div class="grades">
+${[8,9,10,11,12].map(g=>`<button class="gr ${S.grade==g?'on':''}" onclick="S.grade=${g};save();go('${S.in?'dashboard':'signup'}')">Grade ${g}</button>`).join('')}
+</div>
+</section>
+
+<section class="sec cta">
+<h2>Build your plan with Coursemaxxing.</h2>
+<p>Free to start. We only ask for what we need.</p>
+<a class="btn" href="#/signup">Get Started</a>
+</section>`,
 signup:()=>auth(1),login:()=>auth(0),
 dashboard:()=>{if(!S.in)return auth(0);return `<h1 style="font-size:2rem">Welcome, ${esc(S.name||'Student')}</h1><p>${GP[S.grade]}</p>
 <div class="two" style="margin:24px 0"><div class="card"><h3>Academic snapshot</h3><div class="stat"><b>Grade</b><span>${S.grade}</span></div><div class="stat"><b>Average</b><span>Not added</span></div><div class="stat"><b>Target</b><span>${S.target?S.target+'%':'Not added'}</span></div><div class="stat"><b>University interests</b><span>Not added</span></div></div><div class="card"><h3>Profile</h3>${empty('Add your information to personalize your Coursemaxxing experience.')}<div style="margin-top:12px"><a class="btn sm" href="#/profile">Edit profile</a></div></div></div>
