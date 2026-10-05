@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Coursemaxxing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#fff;--surf:#f5f7f6;--ink:#14181b;--mute:#5d6770;--line:#e4e8e6;--g:#16a34a;--g2:#128a3e;--gl:#e9f8ef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101412;--surf:#181d1a;--ink:#eef2f0;--mute:#9aa6a0;--line:#26302b;--gl:#12301e}}
+:root[data-theme="dark"]{--bg:#101412;--surf:#181d1a;--ink:#eef2f0;--mute:#9aa6a0;--line:#26302b;--gl:#12301e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+h1,h2,h3{line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}h2{font-size:clamp(1.5rem,3vw,2rem)}h3{font-size:1.1rem}
+p{margin:0 0 1em;color:var(--mute)}a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.nb{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:24px}
+.logo{font-weight:800;letter-spacing:.06em;font-size:1.05rem}.logo b{color:var(--g)}
+.links{display:flex;gap:4px;flex:1}.links a{padding:8px 12px;border-radius:8px;color:var(--mute);font-weight:500;font-size:.95rem;transition:.15s}
+.links a:hover{background:var(--surf);color:var(--ink)}.links a.on{color:var(--g2);background:var(--gl)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--ink);font-size:1.1rem}
+@media(max-width:800px){.burger{display:block;margin-left:auto}.links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:10px 20px;border-bottom:1px solid var(--line)}.links.open{display:flex}.nb .acct{display:none}}
+main{max-width:1100px;margin:auto;padding:32px 20px 80px;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.btn{display:inline-block;background:var(--g);color:#fff;border:0;border-radius:10px;padding:12px 22px;font:600 1rem inherit;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--g2);transform:translateY(-1px)}.btn.o{background:none;color:var(--ink);border:1px solid var(--line)}.btn.o:hover{background:var(--surf)}.btn.sm{padding:8px 14px;font-size:.9rem}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:.2s}
+a.card:hover,.card.h:hover{border-color:var(--g);box-shadow:0 6px 18px rgba(22,163,74,.1)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--surf);color:var(--mute)}.tag.g{background:var(--gl);color:var(--g2)}
+.hero{padding:56px 0 48px;max-width:760px}.eyebrow{color:var(--g2);font-weight:800;letter-spacing:.14em;font-size:.85rem;margin-bottom:14px}.hero p{font-size:1.15rem}
+.sec{margin-top:64px}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.steps{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.num{width:34px;height:34px;border-radius:50%;background:var(--gl);color:var(--g2);display:grid;place-items:center;font-weight:800;margin-bottom:10px}
+.grades{display:flex;gap:10px;flex-wrap:wrap}.gr{flex:1;min-width:90px;padding:16px;text-align:center;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:700 1rem inherit;cursor:pointer;transition:.15s}.gr:hover{border-color:var(--g)}.gr.on{background:var(--g);border-color:var(--g);color:#fff}
+.cta{background:var(--surf);border-radius:18px;padding:44px 24px;text-align:center}
+label{display:block;font-weight:600;font-size:.9rem;margin:0 0 6px}
+input,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--g);outline-offset:1px}
+.form{max-width:420px;margin:30px auto}.fld{margin-bottom:16px}
+.res{text-align:center;padding:30px 10px}.res small{letter-spacing:.14em;font-weight:800;color:var(--g2)}.res .big{font-size:clamp(3rem,10vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.two{display:grid;gap:16px;grid-template-columns:1fr 1fr}@media(max-width:700px){.two{grid-template-columns:1fr}}
+.six{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.chat{height:min(480px,60vh);overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:6px}
+.m{max-width:85%;padding:12px 15px;border-radius:14px;white-space:pre-wrap}.m.u{align-self:flex-end;background:var(--g);color:#fff;border-bottom-right-radius:4px}.m.a{background:var(--surf);color:var(--ink);border-bottom-left-radius:4px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:8px 13px;border-radius:99px;font:.88rem inherit;cursor:pointer;transition:.15s}.chip:hover{border-color:var(--g);color:var(--g2)}
+.empty{border:1.5px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--mute)}
+.stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.stat:last-child{border:0}.stat span:last-child{color:var(--mute)}
+.bar{height:8px;background:var(--surf);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--g);transition:width .3s}
+.mute{opacity:.6}
+</style></head><body>
+<nav><div class="nb"><a href="#/" class="logo">COURSE<b>MAXXING</b></a>
+<div class="links" id="links"><a href="#/">Home</a><a href="#/explore">Explore</a><a href="#/tools">Tools</a><a href="#/architect">Architect</a><a href="#/portfolio">My Portfolio</a></div>
+<div class="acct" id="acct"></div><button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button></div></nav>
+<main id="app"></main>
+<script>
+let S={name:'',email:'',grade:11,in:false,target:''};
+try{const x=localStorage.getItem('cm');if(x)S=Object.assign(S,JSON.parse(x))}catch(e){}
+const save=()=>{try{localStorage.setItem('cm',JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+let chat=[];
+const SOON='<span class="tag">Coming soon</span>';
+const empty=t=>`<div class="empty">${t}</div>`;
+const card=(t,d,h,tag)=>`<${h?'a href="'+h+'"':'div'} class="card ${h?'':'h'}"><div style="margin-bottom:10px">${tag||''}</div><h3>${t}</h3><p style="margin:0">${d}</p></${h?'a':'div'}>`;
+const GP={8:'Discover interests, build strong habits, and understand how courses connect to pathways.',9:'Discover interests, build strong habits, and understand how courses connect to pathways.',10:'Explore pathways and start understanding how Grade 11 and 12 course choices open or close doors.',11:'Focus on course selection, your Top 6, university programs, and academic goals.',12:'Focus on admissions, your Top 6, scholarships, and final decisions about your next step.'};
+const MOCK={default:"This is a placeholder response. The real Architect will be connected to an AI API later and will use your profile.\n\nFor now, a useful starting point: write down your current courses, your marks, and one or two programs you might want. The Top 6 Calculator can show where you stand today.",
+'What should I focus on in Grade 11?':"Placeholder response (AI not connected).\n\nFacts to verify with your school and target universities: which Grade 12 courses are prerequisites for programs you like.\nRecommendation: choose Grade 12 courses with those prerequisites in mind, and track your Top 6 early.",
+'How can I improve my university chances?':"Placeholder response (AI not connected).\n\nI can't state admission requirements without verified data. Once connected, I'll separate verified facts from recommendations, and tailor advice to your marks, activities and goals.",
+"I'm interested in business. What should I look at?":"Placeholder response (AI not connected).\n\nRecommendation: look at the University Explorer for example business programs, then check each school's official site for prerequisites and admission details.",
+"What should I do if I don't know what I want to study?":"Placeholder response (AI not connected).\n\nThat's common. A sensible first step is exploring interests through a credible external assessment, then bringing the results here to discuss possible directions.",
+'Help me plan my next steps.':"Placeholder response (AI not connected).\n\n1. Add your grade and courses.\n2. Calculate your Top 6.\n3. Shortlist programs to research.\n4. Come back and we'll map out what to do next."};
+const SUG=["What should I focus on in Grade 11?","How can I improve my university chances?","I'm interested in business. What should I look at?","What should I do if I don't know what I want to study?","Help me plan my next steps."];
+const R={
+'':()=>`<section class="hero"><div class="eyebrow">COURSEMAXXING</div><h1>Make smarter decisions about school, university, and your future.</h1><p>Coursemaxxing helps students plan their academics, explore university options, understand what to focus on, and make better decisions about what comes next.</p><div class="row"><a class="btn" href="#/${S.in?'dashboard':'signup'}">Get Started</a><a class="btn o" href="#/explore">Explore Coursemaxxing</a></div></section>
+<section class="sec"><h2>Who we are</h2><p style="max-width:660px">Coursemaxxing is one place for students to figure out what they should be doing for school, university, and their future.</p></section>
+<section class="sec"><h2>How it works</h2><div class="steps">${[['Build your profile','Add your grade, courses and goals.'],['Explore your options','Browse programs, courses and strategies.'],['Plan your next steps','Use tools like the Top 6 Calculator.'],['Ask The Architect','Get strategic guidance for your situation.']].map((s,i)=>`<div class="card"><div class="num">${i+1}</div><h3>${s[0]}</h3><p style="margin:0">${s[1]}</p></div>`).join('')}</div></section>
+<section class="sec"><h2>Features</h2><div class="grid">${card('The Architect','Strategic academic planning assistant.','#/architect',SOON.replace('Coming soon','Preview'))}${card('Top 6 Calculator','Calculate your Top 6 average and compare to a target.','#/top6','<span class="tag g">Live</span>')}${card('University Exploration','Explore example programs.','#/universities',SOON)}${card('Course Planning','Map out your courses.','#/courses',SOON)}${card('Student Portfolio','Keep your academic story in one place.','#/portfolio',SOON)}${card('Academic Planning','Goals and next steps.','#/dashboard',SOON)}${card('School & Study Strategies','Practical guidance.','#/tools',SOON)}</div></section>
+<section class="sec"><h2>Choose your grade</h2><div class="grades">${[8,9,10,11,12].map(g=>`<button class="gr ${S.grade==g?'on':''}" onclick="S.grade=${g};save();go('${S.in?'dashboard':'signup'}')">Grade ${g}</button>`).join('')}</div></section>
+<section class="sec cta"><h2>Create your Coursemaxxing profile</h2><p>Free to start. We only ask for what we need.</p><a class="btn" href="#/signup">Get Started</a></section>`,
+signup:()=>auth(1),login:()=>auth(0),
+dashboard:()=>{if(!S.in)return auth(0);return `<h1 style="font-size:2rem">Welcome, ${esc(S.name||'Student')}</h1><p>${GP[S.grade]}</p>
+<div class="two" style="margin:24px 0"><div class="card"><h3>Academic snapshot</h3><div class="stat"><b>Grade</b><span>${S.grade}</span></div><div class="stat"><b>Average</b><span>Not added</span></div><div class="stat"><b>Target</b><span>${S.target?S.target+'%':'Not added'}</span></div><div class="stat"><b>University interests</b><span>Not added</span></div></div><div class="card"><h3>Profile</h3>${empty('Add your information to personalize your Coursemaxxing experience.')}<div style="margin-top:12px"><a class="btn sm" href="#/profile">Edit profile</a></div></div></div>
+<div class="grid">${card('Explore','Discover guidance.','#/explore')}${card('Tools','Calculators and strategies.','#/tools')}${card('The Architect','Ask for strategic advice.','#/architect')}${card('My Portfolio','Your academic story.','#/portfolio')}${card('University Planning','Example programs.','#/universities')}${card('Course Planning','Plan your courses.','#/courses')}</div>`},
+explore:()=>`<h1 style="font-size:2.2rem">Explore</h1><p>A hub for discovering what matters at your stage.</p><div class="grid">${card('Grade guidance',GP[S.grade],'#/dashboard')}${card('University planning','Example programs and what to research.','#/universities')}${card('Courses','Plan Grades 9–12.','#/courses')}${card('Careers','Explore directions with an external assessment.','#/tools','')}${card('Academic strategies','Studying and school strategies.','#/tools')}</div>
+<section class="sec card"><h3>Interest exploration</h3><p>Coursemaxxing does not offer its own validated assessment. Eventually you'll be able to: 1) take a credible external interest/career assessment, 2) bring your results here, 3) use The Architect to interpret them, 4) explore fields and programs.</p>${SOON}</section>`,
+tools:()=>`<h1 style="font-size:2.2rem">Tools</h1><p>Practical tools and content for students.</p><div class="grid">${card('Top 6 Calculator','Works now.','#/top6','<span class="tag g">Live</span>')}${['Studying','School Strategies','University Planning','Course Planning','Academic Improvement'].map(t=>card(t,'Content in development.','',S.in?SOON:'<span class="tag">Sign up to view</span>')).join('')}</div>`,
+top6:()=>`<h1 style="font-size:2.2rem">Top 6 Calculator</h1><p>Enter six marks to calculate your average.</p><div class="two"><div class="card"><div class="six">${[1,2,3,4,5,6].map(i=>`<div><label>Course ${i}</label><input class="mk" inputmode="decimal" placeholder="e.g. 90" oninput="calc()"></div>`).join('')}</div><div class="fld" style="margin-top:16px"><label>Target % (optional)</label><input id="tg" inputmode="decimal" value="${S.target}" oninput="S.target=this.value;save();calc()"></div></div><div class="card res" id="res"></div></div><p style="margin-top:12px;font-size:.9rem">Saved to your profile later (local only for now).</p>`,
+architect:()=>`<h1 style="font-size:2.2rem">The Architect</h1><p>Helps you think through academics, university, courses, studying, and future plans. <span class="tag">Placeholder responses</span></p><div class="row" style="margin-bottom:14px">${SUG.map((q,i)=>`<button class="chip" onclick="$('ci').value=SUG[${i}];$('ci').focus()">${q}</button>`).join('')}</div><div class="card"><div class="chat" id="chat"></div><div class="row" style="margin-top:14px;flex-wrap:nowrap"><input id="ci" placeholder="Ask The Architect…" onkeydown="if(event.key==='Enter')send()"><button class="btn" onclick="send()">Send</button></div><div style="margin-top:10px"><button class="chip" onclick="chat=[];draw()">Clear conversation</button></div></div>`,
+universities:()=>`<h1 style="font-size:2.2rem">University Exploration</h1><p>Example programs only. Unverified details are marked Coming Soon.</p><div class="grid">${['Western / Ivey','Laurier','Other Ontario business options'].map(n=>`<div class="card"><h3>${n}</h3>${['Admission average','Required courses','Prerequisites','Co-op','Approximate cost','Supplementary application','Scholarships'].map(f=>`<div class="stat"><b>${f}</b>${SOON}</div>`).join('')}</div>`).join('')}</div>`,
+courses:()=>`<h1 style="font-size:2.2rem">Course Planning</h1><p>${SOON} A prototype of your future planner.</p>${empty("You haven't added your courses yet.")}<div class="grid" style="margin-top:16px">${[1,2,3,4,5,6,7,8].map(i=>`<div class="card mute"><h3>Course ${i}</h3><p style="margin:0">Select course</p></div>`).join('')}</div>`,
+portfolio:()=>`<h1 style="font-size:2.2rem">My Portfolio</h1><p>Your portfolio will appear here once you start building it.</p><div class="grid">${[['Academic','Grade, courses, marks, strengths, weaknesses'],['Experience','Extracurriculars, volunteer, work'],['Achievements','Awards, certifications, competitions'],['Future','Goals, university targets, career interests']].map(c=>card(c[0],c[1],'',SOON)).join('')}</div>`,
+profile:()=>`<h1 style="font-size:2.2rem">Profile</h1><div class="card" style="max-width:520px"><div class="fld"><label>Name</label><input id="pn" value="${esc(S.name)}"></div><div class="fld"><label>Email</label><input id="pe" value="${esc(S.email)}"></div><div class="fld"><label>Grade</label><select id="pg">${[8,9,10,11,12].map(g=>`<option ${S.grade==g?'selected':''}>${g}</option>`).join('')}</select></div><div class="fld"><label>Academic information</label>${empty('Not added')}</div><div class="fld"><label>Interests / University interests</label>${empty('Not added')}</div><div class="row"><button class="btn" onclick="S.name=$('pn').value;S.email=$('pe').value;S.grade=+$('pg').value;save();acct();go('dashboard')">Save</button><button class="btn o" disabled title="Not connected in V1">Delete account (not connected)</button></div></div>`
+};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function auth(su){return `<div class="form card"><h2>${su?'Create your profile':'Log in'}</h2>${su?`<div class="fld"><label>First name / nickname</label><input id="an"></div>`:''}<div class="fld"><label>Email</label><input id="ae" type="email"></div><div class="fld"><label>Password</label><input type="password"></div>${su?`<div class="fld"><label>Grade</label><select id="ag">${[8,9,10,11,12].map(g=>`<option ${S.grade==g?'selected':''}>${g}</option>`).join('')}</select></div>`:''}<button class="btn" style="width:100%" onclick="doAuth(${su})">${su?'Sign up':'Log in'}</button><p style="margin:14px 0 0;font-size:.85rem">Mock sign-in stored locally. Supabase auth connects later.</p></div>`}
+function doAuth(su){if(su){S.name=$('an').value;S.grade=+$('ag').value}S.email=$('ae').value;S.in=true;save();acct();go('dashboard')}
+function acct(){$('acct').innerHTML=S.in?`<a class="btn o sm" href="#/profile">${esc(S.name||'Profile')}</a>`:`<a class="btn o sm" href="#/login">Log in</a> <a class="btn sm" href="#/signup">Sign up</a>`}
+function calc(){const v=[...document.querySelectorAll('.mk')].map(i=>i.value.trim()),ok=v.filter(x=>x!==''&&!isNaN(x)&&x>=0&&x<=100),bad=v.some(x=>x!==''&&(isNaN(x)||x<0||x>100));let h;
+if(bad)h='<small>YOUR TOP 6</small><div class="big">—</div><p>Marks must be numbers from 0 to 100.</p>';
+else if(ok.length<6)h=`<small>YOUR TOP 6</small><div class="big">—</div><p>Enter all six marks (${ok.length}/6).</p><div class="bar"><i style="width:${ok.length/6*100}%"></i></div>`;
+else{const a=ok.reduce((s,x)=>s+ +x,0)/6,t=parseFloat(S.target);h=`<small>YOUR TOP 6</small><div class="big">${a.toFixed(1)}%</div>`+(isNaN(t)?'<p>Target: Not selected</p>':`<div class="stat"><b>Current</b><span>${a.toFixed(1)}%</span></div><div class="stat"><b>Target</b><span>${t}%</span></div><div class="stat"><b>Difference</b><span>${Math.abs(t-a).toFixed(1)} points ${a>=t?'above':'below'}</span></div>`)}
+$('res').innerHTML=h}
+function draw(){const c=$('chat');if(!c)return;c.innerHTML=chat.length?chat.map(m=>`<div class="m ${m.r}">${esc(m.t)}</div>`).join(''):empty('Ask a question or pick a suggestion above.');c.scrollTop=c.scrollHeight}
+function send(){const i=$('ci'),t=i.value.trim();if(!t)return;chat.push({r:'u',t});i.value='';draw();setTimeout(()=>{chat.push({r:'a',t:MOCK[t]||MOCK.default});draw()},500)}
+function go(p){location.hash='#/'+p}
+function route(){const p=(location.hash.replace('#/','')||'');const f=R[p]||R[''];$('app').innerHTML=f();$('app').style.animation='none';$('app').offsetHeight;$('app').style.animation='';$('links').classList.remove('open');
+document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+p));window.scrollTo(0,0);if(p==='top6')calc();if(p==='architect')draw()}
+window.addEventListener('hashchange',route);acct();route();
+</script></body></html>
