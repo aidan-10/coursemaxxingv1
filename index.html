@@ -46,7 +46,110 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--g);outline-offse
 .stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.stat:last-child{border:0}.stat span:last-child{color:var(--mute)}
 .bar{height:8px;background:var(--surf);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--g);transition:width .3s}
 .mute{opacity:.6}
-</style></head><body>
+/* Coursemaxxing homepage styling */
+
+.about-head {
+  display:grid;
+  grid-template-columns:0.8fr 1.2fr;
+  gap:70px;
+  align-items:start;
+}
+
+.about-head h2 {
+  margin-top:10px;
+  max-width:420px;
+}
+
+.about-head p {
+  max-width:680px;
+  line-height:1.75;
+}
+
+.steps {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:30px;
+}
+
+.step-card {
+  position:relative;
+  padding:26px;
+  min-height:190px;
+}
+
+.step-card .num {
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--gl);
+  color:var(--g2);
+  font-weight:800;
+  margin-bottom:22px;
+}
+
+.feature-section {
+  background:var(--surf);
+  margin-left:-24px;
+  margin-right:-24px;
+  padding-left:24px;
+  padding-right:24px;
+}
+
+.feature-section .grid {
+  margin-top:30px;
+}
+
+.grade-section {
+  text-align:center;
+}
+
+.grade-section p {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.grades {
+  margin-top:30px;
+}
+
+.cta {
+  text-align:center;
+  padding-top:90px;
+  padding-bottom:90px;
+}
+
+.cta p {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+@media(max-width:800px) {
+  .about-head {
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .steps {
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:520px) {
+  .steps {
+    grid-template-columns:1fr;
+  }
+
+  .feature-section {
+    margin-left:-16px;
+    margin-right:-16px;
+    padding-left:16px;
+    padding-right:16px;
+  }
+}</style></head><body>
 <nav><div class="nb"><a href="#/" class="logo">COURSE<b>MAXXING</b></a>
 <div class="links" id="links"><a href="#/">Home</a><a href="#/explore">Explore</a><a href="#/tools">Tools</a><a href="#/architect">Architect</a><a href="#/portfolio">My Portfolio</a></div>
 <div class="acct" id="acct"></div><button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button></div></nav>
