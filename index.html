@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><title>Coursemaxxing</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -13,13 +10,33 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-ap
 h1,h2,h3{line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
 h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}h2{font-size:clamp(1.5rem,3vw,2rem)}h3{font-size:1.1rem}
 p{margin:0 0 1em;color:var(--mute)}a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.nb{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:24px}
-.logo{font-weight:800;letter-spacing:.06em;font-size:1.05rem}.logo b{color:var(--g)}
-.links{display:flex;gap:4px;flex:1}.links a{padding:8px 12px;border-radius:8px;color:var(--mute);font-weight:500;font-size:.95rem;transition:.15s}
-.links a:hover{background:var(--surf);color:var(--ink)}.links a.on{color:var(--g2);background:var(--gl)}
-.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--ink);font-size:1.1rem}
-@media(max-width:800px){.burger{display:block;margin-left:auto}.links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:10px 20px;border-bottom:1px solid var(--line)}.links.open{display:flex}.nb .acct{display:none}}
+
+/* ===== NAV (V2 style) ===== */
+nav{position:sticky;top:0;z-index:50;background:var(--cm-cream,#FDFBF7);border-bottom:2px solid var(--cm-black,#111)}
+.nb{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
+.logo{font-weight:900;letter-spacing:.04em;font-size:1.05rem;color:var(--cm-black,#111);white-space:nowrap}
+.logo b{display:inline-block;margin-left:4px;padding:1px 7px;background:var(--cm-blue,#3B82F6);border:2px solid var(--cm-black,#111);border-radius:8px;transform:rotate(-2deg)}
+.links{display:flex;gap:6px;flex:1;align-items:center}
+.links>a{padding:7px 13px;border:2px solid transparent;border-radius:12px;color:var(--cm-black,#111);font-weight:800;font-size:.92rem;transition:.15s}
+.links>a:hover{background:var(--cm-yellow,#FFD84D);border-color:var(--cm-black,#111)}
+.links>a.on{background:var(--cm-blue,#3B82F6);border-color:var(--cm-black,#111);box-shadow:3px 3px 0 var(--cm-black,#111)}
+.acct{display:flex;gap:10px;align-items:center}
+.acct-m{display:none}
+.btn-v2.sm{padding:8px 15px;font-size:.9rem;border-radius:12px;box-shadow:3px 3px 0 var(--cm-black,#111)}
+.btn-v2.sm:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--cm-black,#111)}
+.btn-v2.white{background:#fff}
+.burger{display:none;width:44px;height:44px;margin-left:auto;place-items:center;background:var(--cm-yellow,#FFD84D);border:2px solid var(--cm-black,#111);border-radius:12px;box-shadow:3px 3px 0 var(--cm-black,#111);color:var(--cm-black,#111);font-size:1.2rem;font-weight:900;cursor:pointer}
+.burger:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--cm-black,#111)}
+@media(max-width:860px){
+  .burger{display:grid}
+  .acct{display:none}
+  .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:8px;padding:16px 20px 20px;background:var(--cm-cream,#FDFBF7);border-bottom:2px solid var(--cm-black,#111)}
+  .links.open{display:flex}
+  .links>a{padding:13px 14px;font-size:1rem}
+  .acct-m{display:flex;gap:10px;margin-top:6px;padding-top:16px;border-top:2px solid var(--cm-black,#111)}
+  .acct-m .btn-v2{flex:1}
+}
+
 main{max-width:1100px;margin:auto;padding:32px 20px 80px;animation:in .3s ease}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
 .btn{display:inline-block;background:var(--g);color:#fff;border:0;border-radius:10px;padding:12px 22px;font:600 1rem inherit;cursor:pointer;transition:.15s}
@@ -682,7 +699,7 @@ body {
 
 </style></head><body>
 <nav><div class="nb"><a href="#/" class="logo">COURSE<b>MAXXING</b></a>
-<div class="links" id="links"><a href="#/">Home</a><a href="#/explore">Explore</a><a href="#/tools">Tools</a><a href="#/architect">Architect</a><a href="#/portfolio">My Portfolio</a></div>
+<div class="links" id="links"><a href="#/">Home</a><a href="#/explore">Explore</a><a href="#/tools">Tools</a><a href="#/architect">Architect</a><a href="#/portfolio">My Portfolio</a><div class="acct-m" id="acctm"></div></div>
 <div class="acct" id="acct"></div><button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button></div></nav>
 <main id="app"></main>
 <script>
@@ -950,7 +967,7 @@ profile:()=>`<h1 style="font-size:2.2rem">Profile</h1><div class="card" style="m
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function auth(su){return `<div class="form card"><h2>${su?'Create your profile':'Log in'}</h2>${su?`<div class="fld"><label>First name / nickname</label><input id="an"></div>`:''}<div class="fld"><label>Email</label><input id="ae" type="email"></div><div class="fld"><label>Password</label><input type="password"></div>${su?`<div class="fld"><label>Grade</label><select id="ag">${[8,9,10,11,12].map(g=>`<option ${S.grade==g?'selected':''}>${g}</option>`).join('')}</select></div>`:''}<button class="btn" style="width:100%" onclick="doAuth(${su})">${su?'Sign up':'Log in'}</button><p style="margin:14px 0 0;font-size:.85rem">Mock sign-in stored locally. Supabase auth connects later.</p></div>`}
 function doAuth(su){if(su){S.name=$('an').value;S.grade=+$('ag').value}S.email=$('ae').value;S.in=true;save();acct();go('dashboard')}
-function acct(){$('acct').innerHTML=S.in?`<a class="btn o sm" href="#/profile">${esc(S.name||'Profile')}</a>`:`<a class="btn o sm" href="#/login">Log in</a> <a class="btn sm" href="#/signup">Sign up</a>`}
+function acct(){const h=S.in?`<a class="btn-v2 sm blue" href="#/profile">${esc(S.name||'Profile')}</a>`:`<a class="btn-v2 sm white" href="#/login">Log in</a><a class="btn-v2 sm blue" href="#/signup">Sign up</a>`;$('acct').innerHTML=h;$('acctm').innerHTML=h}
 function calc(){const v=[...document.querySelectorAll('.mk')].map(i=>i.value.trim()),ok=v.filter(x=>x!==''&&!isNaN(x)&&x>=0&&x<=100),bad=v.some(x=>x!==''&&(isNaN(x)||x<0||x>100));let h;
 if(bad)h='<small>YOUR TOP 6</small><div class="big">—</div><p>Marks must be numbers from 0 to 100.</p>';
 else if(ok.length<6)h=`<small>YOUR TOP 6</small><div class="big">—</div><p>Enter all six marks (${ok.length}/6).</p><div class="bar"><i style="width:${ok.length/6*100}%"></i></div>`;
@@ -960,6 +977,6 @@ function draw(){const c=$('chat');if(!c)return;c.innerHTML=chat.length?chat.map(
 function send(){const i=$('ci'),t=i.value.trim();if(!t)return;chat.push({r:'u',t});i.value='';draw();setTimeout(()=>{chat.push({r:'a',t:MOCK[t]||MOCK.default});draw()},500)}
 function go(p){location.hash='#/'+p}
 function route(){const p=(location.hash.replace('#/','')||'');const f=R[p]||R[''];$('app').innerHTML=f();$('app').style.animation='none';$('app').offsetHeight;$('app').style.animation='';$('links').classList.remove('open');
-document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+p));window.scrollTo(0,0);if(p==='top6')calc();if(p==='architect')draw()}
+document.querySelectorAll('.links>a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+p));window.scrollTo(0,0);if(p==='top6')calc();if(p==='architect')draw()}
 window.addEventListener('hashchange',route);acct();route();
 </script></body></html>
