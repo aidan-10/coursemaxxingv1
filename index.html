@@ -5,6 +5,7 @@
 <html lang="en"><head><meta charset="utf-8"><title>Coursemaxxing</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#fff;--surf:#f5f7f6;--ink:#14181b;--mute:#5d6770;--line:#e4e8e6;--g:#16a34a;--g2:#128a3e;--gl:#e9f8ef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
@@ -46,110 +47,640 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--g);outline-offse
 .stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.stat:last-child{border:0}.stat span:last-child{color:var(--mute)}
 .bar{height:8px;background:var(--surf);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--g);transition:width .3s}
 .mute{opacity:.6}
-/* Coursemaxxing homepage styling */
 
-.about-head {
+/* =========================================================
+   COURSEMAXXING V2 — PLAYFUL PROFESSIONAL HOMEPAGE
+   ========================================================= */
+
+:root {
+  --cm-cream:#FDFBF7;
+  --cm-blue:#3B82F6;
+  --cm-yellow:#FFD84D;
+  --cm-coral:#FF6B5E;
+  --cm-black:#111111;
+  --cm-white:#FFFFFF;
+}
+
+body {
+  background:var(--cm-cream);
+  color:var(--cm-black);
+  font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+
+.hero-v2,
+.intro-v2,
+.bento-section,
+.grade-v2,
+.founder-v2,
+.final-cta-v2 { color:var(--cm-black); }
+
+.hero-v2 {
+  min-height:620px;
   display:grid;
-  grid-template-columns:0.8fr 1.2fr;
+  grid-template-columns:1.05fr .95fr;
   gap:70px;
-  align-items:start;
+  align-items:center;
+  padding:70px 0 90px;
 }
 
-.about-head h2 {
-  margin-top:10px;
-  max-width:420px;
+.hero-copy { max-width:680px; }
+
+.eyebrow-v2 {
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+  color:var(--cm-black);
+  margin-bottom:18px;
 }
 
-.about-head p {
-  max-width:680px;
-  line-height:1.75;
+.hero-copy h1 {
+  margin:0;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  font-weight:900;
+  max-width:720px;
 }
 
-.steps {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-top:30px;
+.hero-copy h1 span,
+.intro-v2 h2 span,
+.founder-copy h2 span { color:var(--cm-blue); }
+
+.hero-copy > p {
+  max-width:590px;
+  font-size:18px;
+  line-height:1.65;
+  margin:28px 0 30px;
 }
 
-.step-card {
+.hero-actions {
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.btn-v2 {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px 23px;
+  border:2px solid var(--cm-black);
+  border-radius:18px;
+  font-weight:900;
+  text-decoration:none;
+  color:var(--cm-black);
+  transition:.18s ease;
+  box-shadow:5px 5px 0 var(--cm-black);
+}
+
+.btn-v2:hover {
+  transform:translate(3px,3px);
+  box-shadow:2px 2px 0 var(--cm-black);
+}
+
+.btn-v2.blue { background:var(--cm-blue); }
+.btn-v2.black { background:var(--cm-black); color:white; }
+
+.text-link-v2 {
+  color:var(--cm-black);
+  font-weight:800;
+  text-decoration:underline;
+  text-underline-offset:5px;
+}
+
+.hero-board {
   position:relative;
-  padding:26px;
-  min-height:190px;
-}
-
-.step-card .num {
-  width:42px;
-  height:42px;
+  min-height:470px;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:50%;
-  background:var(--gl);
-  color:var(--g2);
-  font-weight:800;
+}
+
+.student-card {
+  position:relative;
+  z-index:2;
+  width:min(390px,90%);
+  background:white;
+  border:3px solid var(--cm-black);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:12px 12px 0 var(--cm-black);
+  transform:rotate(2deg);
+}
+
+.board-tape {
+  position:absolute;
+  top:35px;
+  right:85px;
+  width:115px;
+  height:34px;
+  background:var(--cm-yellow);
+  border:2px solid var(--cm-black);
+  transform:rotate(8deg);
+  z-index:3;
+}
+
+.student-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.mini-label {
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.status-dot {
+  font-size:10px;
+  font-weight:900;
+  color:#14833b;
+}
+
+.student-card h3 {
+  font-size:42px;
+  margin:20px 0 3px;
+  font-weight:900;
+  letter-spacing:-.04em;
+}
+
+.board-sub {
+  margin:0 0 25px;
+  color:#555;
+}
+
+.mini-stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
   margin-bottom:22px;
 }
 
-.feature-section {
-  background:var(--surf);
-  margin-left:-24px;
-  margin-right:-24px;
-  padding-left:24px;
-  padding-right:24px;
-}
-
-.feature-section .grid {
-  margin-top:30px;
-}
-
-.grade-section {
+.mini-stats div {
+  background:var(--cm-cream);
+  border:2px solid var(--cm-black);
+  border-radius:15px;
+  padding:13px 8px;
   text-align:center;
 }
 
-.grade-section p {
-  margin-left:auto;
-  margin-right:auto;
+.mini-stats strong {
+  display:block;
+  font-size:20px;
+  font-weight:900;
 }
 
-.grades {
+.mini-stats span {
+  display:block;
+  font-size:10px;
+  font-weight:800;
+  margin-top:3px;
+}
+
+.plan-row {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 0;
+  border-top:2px solid #eee;
+  font-size:13px;
+  font-weight:700;
+}
+
+.plan-check {
+  width:25px;
+  height:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid var(--cm-black);
+  border-radius:50%;
+  background:var(--cm-blue);
+  font-weight:900;
+}
+
+.plan-row.pending .plan-check { background:var(--cm-yellow); }
+
+.floating-note {
+  position:absolute;
+  z-index:4;
+  border:2px solid var(--cm-black);
+  border-radius:18px;
+  padding:14px 17px;
+  font-weight:900;
+  font-size:13px;
+  box-shadow:5px 5px 0 var(--cm-black);
+}
+
+.floating-note span {
+  margin-right:7px;
+  font-size:18px;
+}
+
+.yellow-note {
+  background:var(--cm-yellow);
+  top:70px;
+  left:0;
+  transform:rotate(-7deg);
+}
+
+.coral-note {
+  background:var(--cm-coral);
+  bottom:55px;
+  right:0;
+  transform:rotate(6deg);
+}
+
+.intro-v2 {
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:80px;
+  padding:110px 0;
+  border-top:2px solid var(--cm-black);
+}
+
+.intro-v2 h2 {
+  font-size:clamp(34px,4vw,52px);
+  line-height:1.05;
+  letter-spacing:-.045em;
+  margin:0;
+  font-weight:900;
+}
+
+.intro-v2 > p {
+  font-size:19px;
+  line-height:1.75;
+  max-width:650px;
+  margin:0;
+}
+
+.bento-section { padding:95px 0; }
+
+.section-heading-v2 {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:35px;
+}
+
+.section-heading-v2 h2 {
+  font-size:clamp(34px,4vw,50px);
+  line-height:1;
+  letter-spacing:-.045em;
+  margin:0;
+  font-weight:900;
+}
+
+.section-heading-v2 > p {
+  margin:0;
+  font-weight:700;
+  max-width:280px;
+}
+
+.bento-grid {
+  display:grid;
+  grid-template-columns:1.15fr .85fr .85fr;
+  grid-template-rows:auto auto;
+  gap:18px;
+}
+
+.bento-card {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-height:270px;
+  padding:28px;
+  border:2px solid var(--cm-black);
+  border-radius:28px;
+  color:var(--cm-black);
+  text-decoration:none;
+  overflow:hidden;
+  transition:.18s ease;
+  box-shadow:7px 7px 0 var(--cm-black);
+}
+
+.bento-card:hover {
+  transform:translate(3px,-4px);
+  box-shadow:4px 11px 0 var(--cm-black);
+}
+
+.architect-card {
+  grid-row:span 2;
+  min-height:565px;
+  background:var(--cm-blue);
+}
+
+.top6-card { background:var(--cm-yellow); }
+.university-card { background:var(--cm-coral); }
+.course-card { background:white; }
+.strategy-card { background:white; }
+.portfolio-card { background:var(--cm-yellow); }
+
+.bento-number {
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.bento-icon {
+  width:75px;
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:30px 0 auto;
+  border:3px solid var(--cm-black);
+  border-radius:22px;
+  background:white;
+  font-size:40px;
+  box-shadow:5px 5px 0 var(--cm-black);
+}
+
+.bento-content { margin-top:28px; }
+
+.card-tag {
+  display:inline-block;
+  padding:6px 9px;
+  border:2px solid var(--cm-black);
+  border-radius:10px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.1em;
+  margin-bottom:10px;
+}
+
+.blue-tag { background:#dce9ff; }
+.yellow-tag { background:#fff3ad; }
+.coral-tag { background:#ffd0cb; }
+
+.bento-content h3 {
+  margin:0 0 8px;
+  font-size:28px;
+  line-height:1;
+  letter-spacing:-.035em;
+  font-weight:900;
+}
+
+.bento-content p {
+  margin:0;
+  max-width:430px;
+  line-height:1.55;
+  font-size:14px;
+  font-weight:600;
+}
+
+.card-arrow {
+  display:block;
+  margin-top:22px;
+  font-size:13px;
+  font-weight:900;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+.fake-chart {
+  position:absolute;
+  right:25px;
+  bottom:25px;
+  height:95px;
+  display:flex;
+  align-items:end;
+  gap:7px;
+}
+
+.chart-bar {
+  width:18px;
+  border:2px solid var(--cm-black);
+  border-bottom:0;
+  background:white;
+  border-radius:7px 7px 0 0;
+}
+
+.bar-one {height:35px;}
+.bar-two {height:55px;}
+.bar-three {height:48px;}
+.bar-four {height:78px;}
+.bar-five {height:65px;}
+
+.grade-v2 {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+  padding:105px 0;
+  border-top:2px solid var(--cm-black);
+  border-bottom:2px solid var(--cm-black);
+}
+
+.grade-copy h2 {
+  margin:0;
+  font-size:clamp(36px,4vw,52px);
+  line-height:1;
+  letter-spacing:-.045em;
+  font-weight:900;
+}
+
+.grade-copy p {
+  font-size:17px;
+  line-height:1.6;
+  max-width:500px;
+}
+
+.grade-buttons-v2 {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.grade-pill {
+  border:2px solid var(--cm-black);
+  background:white;
+  border-radius:20px;
+  padding:18px 10px;
+  cursor:pointer;
+  color:var(--cm-black);
+  box-shadow:4px 4px 0 var(--cm-black);
+  transition:.16s ease;
+}
+
+.grade-pill:hover {
+  transform:translate(2px,2px);
+  box-shadow:2px 2px 0 var(--cm-black);
+}
+
+.grade-pill span {
+  display:block;
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.grade-pill strong {
+  display:block;
+  font-size:27px;
+  margin-top:2px;
+}
+
+.grade-pill.selected { background:var(--cm-blue); }
+
+.founder-v2 {
+  display:grid;
+  grid-template-columns:.6fr 1.4fr;
+  gap:80px;
+  padding:110px 0;
+}
+
+.founder-star {
+  width:75px;
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin-top:30px;
+  background:var(--cm-yellow);
+  border:2px solid var(--cm-black);
+  border-radius:50%;
+  font-size:35px;
+  box-shadow:6px 6px 0 var(--cm-black);
 }
 
-.cta {
-  text-align:center;
-  padding-top:90px;
-  padding-bottom:90px;
+.founder-copy { max-width:760px; }
+
+.founder-copy h2 {
+  font-size:clamp(38px,5vw,62px);
+  line-height:1;
+  letter-spacing:-.05em;
+  margin:0 0 30px;
+  font-weight:900;
 }
 
-.cta p {
-  margin-left:auto;
-  margin-right:auto;
+.founder-copy p {
+  max-width:680px;
+  font-size:17px;
+  line-height:1.75;
 }
 
-@media(max-width:800px) {
-  .about-head {
+.final-cta-v2 {
+  position:relative;
+  overflow:hidden;
+  margin-bottom:20px;
+  padding:90px 50px;
+  background:var(--cm-blue);
+  border:3px solid var(--cm-black);
+  border-radius:35px;
+  box-shadow:10px 10px 0 var(--cm-black);
+}
+
+.cta-sticker {
+  display:inline-block;
+  padding:8px 12px;
+  background:var(--cm-yellow);
+  border:2px solid var(--cm-black);
+  border-radius:10px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.1em;
+  transform:rotate(-2deg);
+}
+
+.final-cta-v2 h2 {
+  margin:25px 0 12px;
+  font-size:clamp(42px,6vw,72px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  font-weight:900;
+}
+
+.final-cta-v2 h2 span { color:white; }
+
+.final-cta-v2 p {
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:28px;
+}
+
+@media(max-width:900px) {
+  .hero-v2 {
     grid-template-columns:1fr;
-    gap:20px;
+    gap:45px;
   }
 
-  .steps {
-    grid-template-columns:1fr 1fr;
+  .hero-board { min-height:440px; }
+
+  .intro-v2,
+  .grade-v2,
+  .founder-v2 {
+    grid-template-columns:1fr;
+    gap:35px;
   }
+
+  .bento-grid { grid-template-columns:1fr 1fr; }
+
+  .architect-card { grid-row:span 2; }
+
+  .section-heading-v2 { display:block; }
+
+  .section-heading-v2 > p { margin-top:15px; }
 }
 
-@media(max-width:520px) {
-  .steps {
-    grid-template-columns:1fr;
+@media(max-width:600px) {
+  .hero-v2 { padding-top:45px; }
+
+  .hero-copy h1 { font-size:43px; }
+
+  .hero-copy > p { font-size:16px; }
+
+  .hero-board { min-height:420px; }
+
+  .student-card {
+    width:85%;
+    padding:23px;
   }
 
-  .feature-section {
-    margin-left:-16px;
-    margin-right:-16px;
-    padding-left:16px;
-    padding-right:16px;
+  .yellow-note {
+    left:-5px;
+    top:35px;
   }
-}</style></head><body>
+
+  .coral-note {
+    right:-5px;
+    bottom:35px;
+  }
+
+  .intro-v2,
+  .bento-section,
+  .grade-v2,
+  .founder-v2 {
+    padding:75px 0;
+  }
+
+  .bento-grid { grid-template-columns:1fr; }
+
+  .architect-card {
+    grid-row:auto;
+    min-height:390px;
+  }
+
+  .bento-card { min-height:250px; }
+
+  .grade-buttons-v2 {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .final-cta-v2 {
+    padding:60px 25px;
+    border-radius:25px;
+  }
+
+  .final-cta-v2 h2 { font-size:44px; }
+}
+
+</style></head><body>
 <nav><div class="nb"><a href="#/" class="logo">COURSE<b>MAXXING</b></a>
 <div class="links" id="links"><a href="#/">Home</a><a href="#/explore">Explore</a><a href="#/tools">Tools</a><a href="#/architect">Architect</a><a href="#/portfolio">My Portfolio</a></div>
 <div class="acct" id="acct"></div><button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button></div></nav>
@@ -172,79 +703,235 @@ const MOCK={default:"This is a placeholder response. The real Architect will be 
 'Help me plan my next steps.':"Placeholder response (AI not connected).\n\n1. Add your grade and courses.\n2. Calculate your Top 6.\n3. Shortlist programs to research.\n4. Come back and we'll map out what to do next."};
 const SUG=["What should I focus on in Grade 11?","How can I improve my university chances?","I'm interested in business. What should I look at?","What should I do if I don't know what I want to study?","Help me plan my next steps."];
 const R={
-'':()=>`<section class="hero">
-<div class="eyebrow">COURSEMAXXING</div>
-<h1>Make smarter decisions about school, university, and your future.</h1>
-<p>Coursemaxxing helps students plan their academics, explore university options, understand what to focus on, and make better decisions about what comes next.</p>
-<div class="row">
-<a class="btn" href="#/${S.in?'dashboard':'signup'}">Get Started</a>
-<a class="btn o" href="#/explore">Explore Coursemaxxing</a>
-</div>
+'':()=>`<section class="hero-v2">
+
+  <div class="hero-copy">
+    <div class="eyebrow-v2">COURSEMAXXING ✦ FOR STUDENTS</div>
+
+    <h1>School doesn't come with an instruction manual.<br><span>So we made one.</span></h1>
+
+    <p>
+      Courses. University. Grades. What's next.
+      Coursemaxxing puts the important stuff in one place so you can actually figure it out.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-v2 blue" href="#/${S.in?'dashboard':'signup'}">Get Started →</a>
+      <a class="text-link-v2" href="#/explore">Explore Coursemaxxing</a>
+    </div>
+  </div>
+
+  <div class="hero-board">
+    <div class="board-tape"></div>
+
+    <div class="student-card">
+      <div class="student-top">
+        <span class="mini-label">MY PLAN</span>
+        <span class="status-dot">● ON TRACK</span>
+      </div>
+
+      <h3>Grade ${S.grade}</h3>
+      <p class="board-sub">Your next steps, without the guesswork.</p>
+
+      <div class="mini-stats">
+        <div>
+          <strong>6</strong>
+          <span>Courses</span>
+        </div>
+        <div>
+          <strong>91%</strong>
+          <span>Top 6</span>
+        </div>
+        <div>
+          <strong>3</strong>
+          <span>Goals</span>
+        </div>
+      </div>
+
+      <div class="plan-row">
+        <span class="plan-check">✓</span>
+        <span>Check university requirements</span>
+      </div>
+
+      <div class="plan-row">
+        <span class="plan-check">✓</span>
+        <span>Plan your next courses</span>
+      </div>
+
+      <div class="plan-row pending">
+        <span class="plan-check">→</span>
+        <span>Ask The Architect</span>
+      </div>
+    </div>
+
+    <div class="floating-note yellow-note">
+      <span>★</span>
+      Know what you're doing next.
+    </div>
+
+    <div class="floating-note coral-note">
+      <span>?</span>
+      “What should I take?”
+    </div>
+  </div>
+
 </section>
 
-<section class="sec about">
-<div class="about-head">
-<div>
-<div class="eyebrow">WHO WE ARE</div>
-<h2>Helping students figure out what's next.</h2>
-</div>
-<div>
-<p>Coursemaxxing is one place for students to figure out what they should be doing for school, university, and their future.</p>
-<p>I built Coursemaxxing from my own experience as a high school student. I've been fortunate to have an older sibling who helped me navigate the questions that come with high school — what courses to take, how to prepare for university, what opportunities matter, and what I should actually be doing to build my future.</p>
-<p>But I realized that not every student has someone they can ask all of those questions to. I wanted to create the resource I wish every student had: one place where you can figure things out, make smarter academic decisions, and get guidance as you work toward your future.</p>
-</div>
-</div>
+<section class="intro-v2">
+  <div>
+    <div class="eyebrow-v2">WHY COURSEMAXXING</div>
+    <h2>You have questions.<br><span>We help you figure them out.</span></h2>
+  </div>
+
+  <p>
+    High school comes with a ridiculous number of decisions.
+    What courses should I take? What marks do I need?
+    Which university makes sense? What should I be doing right now?
+    Coursemaxxing brings those questions together.
+  </p>
 </section>
 
-<section class="sec">
-<div class="eyebrow">HOW IT WORKS</div>
-<h2>From questions to a plan.</h2>
-<p>Coursemaxxing brings the important pieces of academic planning together in one place.</p>
+<section class="bento-section">
 
-<div class="steps">
-${[
-['01','Build your profile','Add your grade, courses, goals and interests.'],
-['02','Explore your options','Understand courses, universities, careers and opportunities.'],
-['03','Plan your next steps','Use tools and guidance to make smarter decisions.'],
-['04','Ask The Architect','Get strategic guidance based on your situation.']
-].map(s=>`<div class="card step-card">
-<div class="num">${s[0]}</div>
-<h3>${s[1]}</h3>
-<p style="margin:0">${s[2]}</p>
-</div>`).join('')}
-</div>
+  <div class="section-heading-v2">
+    <div>
+      <div class="eyebrow-v2">YOUR TOOLKIT</div>
+      <h2>Start wherever you are.</h2>
+    </div>
+    <p>Use what you need. Build from there.</p>
+  </div>
+
+  <div class="bento-grid">
+
+    <a class="bento-card architect-card" href="#/architect">
+      <div class="bento-number blue-number">01</div>
+
+      <div class="bento-icon">✦</div>
+
+      <div class="bento-content">
+        <div class="card-tag blue-tag">THE BIG ONE</div>
+        <h3>The Architect</h3>
+        <p>Ask questions. Think through your situation. Get a plan for what to do next.</p>
+        <span class="card-arrow">Open The Architect →</span>
+      </div>
+    </a>
+
+    <a class="bento-card top6-card" href="#/top6">
+      <div class="bento-number yellow-number">02</div>
+
+      <div class="bento-content">
+        <div class="card-tag yellow-tag">LIVE NOW</div>
+        <h3>Top 6 Calculator</h3>
+        <p>See your average. Compare it to your target.</p>
+        <span class="card-arrow">Calculate yours →</span>
+      </div>
+
+      <div class="fake-chart">
+        <div class="chart-bar bar-one"></div>
+        <div class="chart-bar bar-two"></div>
+        <div class="chart-bar bar-three"></div>
+        <div class="chart-bar bar-four"></div>
+        <div class="chart-bar bar-five"></div>
+      </div>
+    </a>
+
+    <a class="bento-card university-card" href="#/universities">
+      <div class="bento-number coral-number">03</div>
+
+      <div class="bento-content">
+        <div class="card-tag coral-tag">EXPLORE</div>
+        <h3>Universities</h3>
+        <p>Start figuring out where your courses and goals could take you.</p>
+        <span class="card-arrow">Explore programs →</span>
+      </div>
+    </a>
+
+    <a class="bento-card course-card" href="#/courses">
+      <div class="bento-number blue-number">04</div>
+
+      <div class="bento-content">
+        <div class="card-tag blue-tag">PLAN AHEAD</div>
+        <h3>Course Planning</h3>
+        <p>Map out the courses that make sense for your path.</p>
+        <span class="card-arrow">Plan your courses →</span>
+      </div>
+    </a>
+
+    <a class="bento-card strategy-card" href="#/tools">
+      <div class="bento-number yellow-number">05</div>
+
+      <div class="bento-content">
+        <div class="card-tag yellow-tag">GET BETTER</div>
+        <h3>School & Study Strategies</h3>
+        <p>Practical ways to study smarter and make school easier to manage.</p>
+        <span class="card-arrow">See strategies →</span>
+      </div>
+    </a>
+
+    <a class="bento-card portfolio-card" href="#/portfolio">
+      <div class="bento-number coral-number">06</div>
+
+      <div class="bento-content">
+        <div class="card-tag coral-tag">YOUR STORY</div>
+        <h3>Student Portfolio</h3>
+        <p>Keep track of your courses, marks, goals, activities and achievements.</p>
+        <span class="card-arrow">View portfolio →</span>
+      </div>
+    </a>
+
+  </div>
 </section>
 
-<section class="sec feature-section">
-<div class="eyebrow">WHAT YOU CAN DO</div>
-<h2>Everything you need to plan ahead.</h2>
-<p>Start with what you need now. Build from there.</p>
+<section class="grade-v2">
+  <div class="grade-copy">
+    <div class="eyebrow-v2">START WHERE YOU ARE</div>
+    <h2>Your grade changes the game.</h2>
+    <p>Choose your grade to see what should matter most right now.</p>
+  </div>
 
-<div class="grid">
-${card('The Architect','Strategic academic planning assistant.','#/architect',SOON.replace('Coming soon','Preview'))}
-${card('Top 6 Calculator','Calculate your Top 6 average and compare to a target.','#/top6','<span class="tag g">Live</span>')}
-${card('University Exploration','Explore example programs.','#/universities',SOON)}
-${card('Course Planning','Map out your courses.','#/courses',SOON)}
-${card('Student Portfolio','Keep your academic story in one place.','#/portfolio',SOON)}
-${card('Academic Planning','Goals and next steps.','#/dashboard',SOON)}
-${card('School & Study Strategies','Practical guidance.','#/tools',SOON)}
-</div>
+  <div class="grade-buttons-v2">
+    ${[8,9,10,11,12].map(g=>`
+      <button
+        class="grade-pill ${S.grade==g?'selected':''}"
+        onclick="S.grade=${g};save();go('${S.in?'dashboard':'signup'}')"
+      >
+        <span>Grade</span>
+        <strong>${g}</strong>
+      </button>
+    `).join('')}
+  </div>
 </section>
 
-<section class="sec grade-section">
-<div class="eyebrow">START WHERE YOU ARE</div>
-<h2>Choose your grade.</h2>
-<p>Your priorities change as you move through high school.</p>
+<section class="founder-v2">
+  <div class="founder-label">
+    <div class="eyebrow-v2">WHY I BUILT THIS</div>
+    <div class="founder-star">✦</div>
+  </div>
 
-<div class="grades">
-${[8,9,10,11,12].map(g=>`<button class="gr ${S.grade==g?'on':''}" onclick="S.grade=${g};save();go('${S.in?'dashboard':'signup'}')">Grade ${g}</button>`).join('')}
-</div>
+  <div class="founder-copy">
+    <h2>I had someone to ask.<br><span>Not everyone does.</span></h2>
+
+    <p>
+      Coursemaxxing started from my own experience as a high school student.
+      I've been fortunate to have an older sibling who could help me navigate
+      the questions that come with high school — what courses to take,
+      how to prepare for university, what opportunities matter, and what
+      I should actually be doing to build my future.
+    </p>
+
+    <p>
+      But not every student has someone they can ask all of those questions to.
+      I wanted to build the resource I wish every student had:
+      one place to figure things out and make smarter decisions.
+    </p>
+  </div>
 </section>
 
-<section class="sec cta">
-<h2>Build your plan with Coursemaxxing.</h2>
-<p>Free to start. We only ask for what we need.</p>
-<a class="btn" href="#/signup">Get Started</a>
+<section class="final-cta-v2">
+  <div class="cta-sticker">LET'S FIGURE IT OUT.</div>
+  <h2>Your future is too important<br>to just <span>wing it.</span></h2>
+  <p>Start building your plan with Coursemaxxing.</p>
+  <a class="btn-v2 black" href="#/signup">Get Started →</a>
 </section>`,
 signup:()=>auth(1),login:()=>auth(0),
 dashboard:()=>{if(!S.in)return auth(0);return `<h1 style="font-size:2rem">Welcome, ${esc(S.name||'Student')}</h1><p>${GP[S.grade]}</p>
