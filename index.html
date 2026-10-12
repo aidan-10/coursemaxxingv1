@@ -1,982 +1,352 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><title>Coursemaxxing</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coursemaxxing</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-:root{--bg:#fff;--surf:#f5f7f6;--ink:#14181b;--mute:#5d6770;--line:#e4e8e6;--g:#16a34a;--g2:#128a3e;--gl:#e9f8ef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
-h1,h2,h3{line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
-h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}h2{font-size:clamp(1.5rem,3vw,2rem)}h3{font-size:1.1rem}
-p{margin:0 0 1em;color:var(--mute)}a{color:inherit;text-decoration:none}
-
-/* ===== NAV (V2 style) ===== */
-nav{position:sticky;top:0;z-index:50;background:var(--cm-cream,#FDFBF7);border-bottom:2px solid var(--cm-black,#111)}
-.nb{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
-.logo{font-weight:900;letter-spacing:.04em;font-size:1.05rem;color:var(--cm-black,#111);white-space:nowrap}
-.logo b{display:inline-block;margin-left:4px;padding:1px 7px;background:var(--cm-blue,#3B82F6);border:2px solid var(--cm-black,#111);border-radius:8px;transform:rotate(-2deg)}
-.links{display:flex;gap:6px;flex:1;align-items:center}
-.links>a{padding:7px 13px;border:2px solid transparent;border-radius:12px;color:var(--cm-black,#111);font-weight:800;font-size:.92rem;transition:.15s}
-.links>a:hover{background:var(--cm-yellow,#FFD84D);border-color:var(--cm-black,#111)}
-.links>a.on{background:var(--cm-blue,#3B82F6);border-color:var(--cm-black,#111);box-shadow:3px 3px 0 var(--cm-black,#111)}
-.acct{display:flex;gap:10px;align-items:center}
-.acct-m{display:none}
-.btn-v2.sm{padding:8px 15px;font-size:.9rem;border-radius:12px;box-shadow:3px 3px 0 var(--cm-black,#111)}
-.btn-v2.sm:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--cm-black,#111)}
-.btn-v2.white{background:#fff}
-.burger{display:none;width:44px;height:44px;margin-left:auto;place-items:center;background:var(--cm-yellow,#FFD84D);border:2px solid var(--cm-black,#111);border-radius:12px;box-shadow:3px 3px 0 var(--cm-black,#111);color:var(--cm-black,#111);font-size:1.2rem;font-weight:900;cursor:pointer}
-.burger:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--cm-black,#111)}
-@media(max-width:860px){
-  .burger{display:grid}
-  .acct{display:none}
-  .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:8px;padding:16px 20px 20px;background:var(--cm-cream,#FDFBF7);border-bottom:2px solid var(--cm-black,#111)}
-  .links.open{display:flex}
-  .links>a{padding:13px 14px;font-size:1rem}
-  .acct-m{display:flex;gap:10px;margin-top:6px;padding-top:16px;border-top:2px solid var(--cm-black,#111)}
-  .acct-m .btn-v2{flex:1}
-}
-
-main{max-width:1100px;margin:auto;padding:32px 20px 80px;animation:in .3s ease}
-@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
-.btn{display:inline-block;background:var(--g);color:#fff;border:0;border-radius:10px;padding:12px 22px;font:600 1rem inherit;cursor:pointer;transition:.15s}
-.btn:hover{background:var(--g2);transform:translateY(-1px)}.btn.o{background:none;color:var(--ink);border:1px solid var(--line)}.btn.o:hover{background:var(--surf)}.btn.sm{padding:8px 14px;font-size:.9rem}
-.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:.2s}
-a.card:hover,.card.h:hover{border-color:var(--g);box-shadow:0 6px 18px rgba(22,163,74,.1)}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-.tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--surf);color:var(--mute)}.tag.g{background:var(--gl);color:var(--g2)}
-.hero{padding:56px 0 48px;max-width:760px}.eyebrow{color:var(--g2);font-weight:800;letter-spacing:.14em;font-size:.85rem;margin-bottom:14px}.hero p{font-size:1.15rem}
-.sec{margin-top:64px}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.steps{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.num{width:34px;height:34px;border-radius:50%;background:var(--gl);color:var(--g2);display:grid;place-items:center;font-weight:800;margin-bottom:10px}
-.grades{display:flex;gap:10px;flex-wrap:wrap}.gr{flex:1;min-width:90px;padding:16px;text-align:center;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:700 1rem inherit;cursor:pointer;transition:.15s}.gr:hover{border-color:var(--g)}.gr.on{background:var(--g);border-color:var(--g);color:#fff}
-.cta{background:var(--surf);border-radius:18px;padding:44px 24px;text-align:center}
-label{display:block;font-weight:600;font-size:.9rem;margin:0 0 6px}
-input,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--g);outline-offset:1px}
-.form{max-width:420px;margin:30px auto}.fld{margin-bottom:16px}
-.res{text-align:center;padding:30px 10px}.res small{letter-spacing:.14em;font-weight:800;color:var(--g2)}.res .big{font-size:clamp(3rem,10vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
-.two{display:grid;gap:16px;grid-template-columns:1fr 1fr}@media(max-width:700px){.two{grid-template-columns:1fr}}
-.six{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-.chat{height:min(480px,60vh);overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:6px}
-.m{max-width:85%;padding:12px 15px;border-radius:14px;white-space:pre-wrap}.m.u{align-self:flex-end;background:var(--g);color:#fff;border-bottom-right-radius:4px}.m.a{background:var(--surf);color:var(--ink);border-bottom-left-radius:4px}
-.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:8px 13px;border-radius:99px;font:.88rem inherit;cursor:pointer;transition:.15s}.chip:hover{border-color:var(--g);color:var(--g2)}
-.empty{border:1.5px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--mute)}
-.stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.stat:last-child{border:0}.stat span:last-child{color:var(--mute)}
-.bar{height:8px;background:var(--surf);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--g);transition:width .3s}
-.mute{opacity:.6}
-
-/* =========================================================
-   COURSEMAXXING V2 — PLAYFUL PROFESSIONAL HOMEPAGE
-   ========================================================= */
 
 :root {
-  --cm-cream:#FDFBF7;
-  --cm-blue:#3B82F6;
-  --cm-yellow:#FFD84D;
-  --cm-coral:#FF6B5E;
-  --cm-black:#111111;
-  --cm-white:#FFFFFF;
-}
-
-body {
-  background:var(--cm-cream);
-  color:var(--cm-black);
-  font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-
-.hero-v2,
-.intro-v2,
-.bento-section,
-.grade-v2,
-.founder-v2,
-.final-cta-v2 { color:var(--cm-black); }
-
-.hero-v2 {
-  min-height:620px;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:70px;
-  align-items:center;
-  padding:70px 0 90px;
-}
-
-.hero-copy { max-width:680px; }
-
-.eyebrow-v2 {
-  display:inline-block;
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.12em;
-  color:var(--cm-black);
-  margin-bottom:18px;
-}
-
-.hero-copy h1 {
-  margin:0;
-  font-size:clamp(42px,6vw,76px);
-  line-height:.98;
-  letter-spacing:-.055em;
-  font-weight:900;
-  max-width:720px;
-}
-
-.hero-copy h1 span,
-.intro-v2 h2 span,
-.founder-copy h2 span { color:var(--cm-blue); }
-
-.hero-copy > p {
-  max-width:590px;
-  font-size:18px;
-  line-height:1.65;
-  margin:28px 0 30px;
-}
-
-.hero-actions {
-  display:flex;
-  align-items:center;
-  gap:22px;
-  flex-wrap:wrap;
-}
-
-.btn-v2 {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px 23px;
-  border:2px solid var(--cm-black);
-  border-radius:18px;
-  font-weight:900;
-  text-decoration:none;
-  color:var(--cm-black);
-  transition:.18s ease;
-  box-shadow:5px 5px 0 var(--cm-black);
-}
-
-.btn-v2:hover {
-  transform:translate(3px,3px);
-  box-shadow:2px 2px 0 var(--cm-black);
-}
-
-.btn-v2.blue { background:var(--cm-blue); }
-.btn-v2.black { background:var(--cm-black); color:white; }
-
-.text-link-v2 {
-  color:var(--cm-black);
-  font-weight:800;
-  text-decoration:underline;
-  text-underline-offset:5px;
-}
-
-.hero-board {
-  position:relative;
-  min-height:470px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.student-card {
-  position:relative;
-  z-index:2;
-  width:min(390px,90%);
-  background:white;
-  border:3px solid var(--cm-black);
-  border-radius:30px;
-  padding:30px;
-  box-shadow:12px 12px 0 var(--cm-black);
-  transform:rotate(2deg);
-}
-
-.board-tape {
-  position:absolute;
-  top:35px;
-  right:85px;
-  width:115px;
-  height:34px;
-  background:var(--cm-yellow);
-  border:2px solid var(--cm-black);
-  transform:rotate(8deg);
-  z-index:3;
-}
-
-.student-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.mini-label {
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.12em;
-}
-
-.status-dot {
-  font-size:10px;
-  font-weight:900;
-  color:#14833b;
-}
-
-.student-card h3 {
-  font-size:42px;
-  margin:20px 0 3px;
-  font-weight:900;
-  letter-spacing:-.04em;
-}
-
-.board-sub {
-  margin:0 0 25px;
-  color:#555;
-}
-
-.mini-stats {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:22px;
-}
-
-.mini-stats div {
-  background:var(--cm-cream);
-  border:2px solid var(--cm-black);
-  border-radius:15px;
-  padding:13px 8px;
-  text-align:center;
-}
-
-.mini-stats strong {
-  display:block;
-  font-size:20px;
-  font-weight:900;
-}
-
-.mini-stats span {
-  display:block;
-  font-size:10px;
-  font-weight:800;
-  margin-top:3px;
-}
-
-.plan-row {
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:11px 0;
-  border-top:2px solid #eee;
-  font-size:13px;
-  font-weight:700;
-}
-
-.plan-check {
-  width:25px;
-  height:25px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid var(--cm-black);
-  border-radius:50%;
-  background:var(--cm-blue);
-  font-weight:900;
-}
-
-.plan-row.pending .plan-check { background:var(--cm-yellow); }
-
-.floating-note {
-  position:absolute;
-  z-index:4;
-  border:2px solid var(--cm-black);
-  border-radius:18px;
-  padding:14px 17px;
-  font-weight:900;
-  font-size:13px;
-  box-shadow:5px 5px 0 var(--cm-black);
-}
-
-.floating-note span {
-  margin-right:7px;
-  font-size:18px;
-}
-
-.yellow-note {
-  background:var(--cm-yellow);
-  top:70px;
-  left:0;
-  transform:rotate(-7deg);
-}
-
-.coral-note {
-  background:var(--cm-coral);
-  bottom:55px;
-  right:0;
-  transform:rotate(6deg);
-}
-
-.intro-v2 {
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:80px;
-  padding:110px 0;
-  border-top:2px solid var(--cm-black);
-}
-
-.intro-v2 h2 {
-  font-size:clamp(34px,4vw,52px);
-  line-height:1.05;
-  letter-spacing:-.045em;
-  margin:0;
-  font-weight:900;
-}
-
-.intro-v2 > p {
-  font-size:19px;
-  line-height:1.75;
-  max-width:650px;
-  margin:0;
-}
-
-.bento-section { padding:95px 0; }
-
-.section-heading-v2 {
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:30px;
-  margin-bottom:35px;
-}
-
-.section-heading-v2 h2 {
-  font-size:clamp(34px,4vw,50px);
-  line-height:1;
-  letter-spacing:-.045em;
-  margin:0;
-  font-weight:900;
-}
-
-.section-heading-v2 > p {
-  margin:0;
-  font-weight:700;
-  max-width:280px;
-}
-
-.bento-grid {
-  display:grid;
-  grid-template-columns:1.15fr .85fr .85fr;
-  grid-template-rows:auto auto;
-  gap:18px;
-}
-
-.bento-card {
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  min-height:270px;
-  padding:28px;
-  border:2px solid var(--cm-black);
-  border-radius:28px;
-  color:var(--cm-black);
-  text-decoration:none;
-  overflow:hidden;
-  transition:.18s ease;
-  box-shadow:7px 7px 0 var(--cm-black);
-}
-
-.bento-card:hover {
-  transform:translate(3px,-4px);
-  box-shadow:4px 11px 0 var(--cm-black);
-}
-
-.architect-card {
-  grid-row:span 2;
-  min-height:565px;
-  background:var(--cm-blue);
-}
-
-.top6-card { background:var(--cm-yellow); }
-.university-card { background:var(--cm-coral); }
-.course-card { background:white; }
-.strategy-card { background:white; }
-.portfolio-card { background:var(--cm-yellow); }
-
-.bento-number {
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.08em;
-}
-
-.bento-icon {
-  width:75px;
-  height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:30px 0 auto;
-  border:3px solid var(--cm-black);
-  border-radius:22px;
-  background:white;
-  font-size:40px;
-  box-shadow:5px 5px 0 var(--cm-black);
-}
-
-.bento-content { margin-top:28px; }
-
-.card-tag {
-  display:inline-block;
-  padding:6px 9px;
-  border:2px solid var(--cm-black);
-  border-radius:10px;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.1em;
-  margin-bottom:10px;
-}
-
-.blue-tag { background:#dce9ff; }
-.yellow-tag { background:#fff3ad; }
-.coral-tag { background:#ffd0cb; }
-
-.bento-content h3 {
-  margin:0 0 8px;
-  font-size:28px;
-  line-height:1;
-  letter-spacing:-.035em;
-  font-weight:900;
-}
-
-.bento-content p {
-  margin:0;
-  max-width:430px;
-  line-height:1.55;
-  font-size:14px;
-  font-weight:600;
-}
-
-.card-arrow {
-  display:block;
-  margin-top:22px;
-  font-size:13px;
-  font-weight:900;
-  text-decoration:underline;
-  text-underline-offset:4px;
-}
-
-.fake-chart {
-  position:absolute;
-  right:25px;
-  bottom:25px;
-  height:95px;
-  display:flex;
-  align-items:end;
-  gap:7px;
-}
-
-.chart-bar {
-  width:18px;
-  border:2px solid var(--cm-black);
-  border-bottom:0;
-  background:white;
-  border-radius:7px 7px 0 0;
-}
-
-.bar-one {height:35px;}
-.bar-two {height:55px;}
-.bar-three {height:48px;}
-.bar-four {height:78px;}
-.bar-five {height:65px;}
-
-.grade-v2 {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:center;
-  padding:105px 0;
-  border-top:2px solid var(--cm-black);
-  border-bottom:2px solid var(--cm-black);
-}
-
-.grade-copy h2 {
-  margin:0;
-  font-size:clamp(36px,4vw,52px);
-  line-height:1;
-  letter-spacing:-.045em;
-  font-weight:900;
-}
-
-.grade-copy p {
-  font-size:17px;
-  line-height:1.6;
-  max-width:500px;
-}
-
-.grade-buttons-v2 {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.grade-pill {
-  border:2px solid var(--cm-black);
-  background:white;
-  border-radius:20px;
-  padding:18px 10px;
-  cursor:pointer;
-  color:var(--cm-black);
-  box-shadow:4px 4px 0 var(--cm-black);
-  transition:.16s ease;
-}
-
-.grade-pill:hover {
-  transform:translate(2px,2px);
-  box-shadow:2px 2px 0 var(--cm-black);
-}
-
-.grade-pill span {
-  display:block;
-  font-size:10px;
-  font-weight:900;
-  text-transform:uppercase;
-}
-
-.grade-pill strong {
-  display:block;
-  font-size:27px;
-  margin-top:2px;
-}
-
-.grade-pill.selected { background:var(--cm-blue); }
-
-.founder-v2 {
-  display:grid;
-  grid-template-columns:.6fr 1.4fr;
-  gap:80px;
-  padding:110px 0;
-}
-
-.founder-star {
-  width:75px;
-  height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:30px;
-  background:var(--cm-yellow);
-  border:2px solid var(--cm-black);
-  border-radius:50%;
-  font-size:35px;
-  box-shadow:6px 6px 0 var(--cm-black);
-}
-
-.founder-copy { max-width:760px; }
-
-.founder-copy h2 {
-  font-size:clamp(38px,5vw,62px);
-  line-height:1;
-  letter-spacing:-.05em;
-  margin:0 0 30px;
-  font-weight:900;
-}
-
-.founder-copy p {
-  max-width:680px;
-  font-size:17px;
-  line-height:1.75;
-}
-
-.final-cta-v2 {
-  position:relative;
-  overflow:hidden;
-  margin-bottom:20px;
-  padding:90px 50px;
-  background:var(--cm-blue);
-  border:3px solid var(--cm-black);
-  border-radius:35px;
-  box-shadow:10px 10px 0 var(--cm-black);
-}
-
-.cta-sticker {
-  display:inline-block;
-  padding:8px 12px;
-  background:var(--cm-yellow);
-  border:2px solid var(--cm-black);
-  border-radius:10px;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.1em;
-  transform:rotate(-2deg);
-}
-
-.final-cta-v2 h2 {
-  margin:25px 0 12px;
-  font-size:clamp(42px,6vw,72px);
-  line-height:.98;
-  letter-spacing:-.055em;
-  font-weight:900;
-}
-
-.final-cta-v2 h2 span { color:white; }
-
-.final-cta-v2 p {
-  font-size:18px;
-  font-weight:700;
-  margin-bottom:28px;
-}
-
-@media(max-width:900px) {
-  .hero-v2 {
-    grid-template-columns:1fr;
-    gap:45px;
-  }
-
-  .hero-board { min-height:440px; }
-
-  .intro-v2,
-  .grade-v2,
-  .founder-v2 {
-    grid-template-columns:1fr;
-    gap:35px;
-  }
-
-  .bento-grid { grid-template-columns:1fr 1fr; }
-
-  .architect-card { grid-row:span 2; }
-
-  .section-heading-v2 { display:block; }
-
-  .section-heading-v2 > p { margin-top:15px; }
-}
-
-@media(max-width:600px) {
-  .hero-v2 { padding-top:45px; }
-
-  .hero-copy h1 { font-size:43px; }
-
-  .hero-copy > p { font-size:16px; }
-
-  .hero-board { min-height:420px; }
-
-  .student-card {
-    width:85%;
-    padding:23px;
-  }
-
-  .yellow-note {
-    left:-5px;
-    top:35px;
-  }
-
-  .coral-note {
-    right:-5px;
-    bottom:35px;
-  }
-
-  .intro-v2,
-  .bento-section,
-  .grade-v2,
-  .founder-v2 {
-    padding:75px 0;
-  }
-
-  .bento-grid { grid-template-columns:1fr; }
-
-  .architect-card {
-    grid-row:auto;
-    min-height:390px;
-  }
-
-  .bento-card { min-height:250px; }
-
-  .grade-buttons-v2 {
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .final-cta-v2 {
-    padding:60px 25px;
-    border-radius:25px;
-  }
-
-  .final-cta-v2 h2 { font-size:44px; }
-}
+  /* Coursemaxxing Master Brief Palette */
+  --cm-cream: #FDFBF7;
+  --cm-blue: #3B82F6;
+  --cm-yellow: #FFD84D;
+  --cm-coral: #FF6B5E;
+  --cm-black: #111111;
+  --cm-white: #FFFFFF;
+  --cm-grey: #f3f4f6;
+  --mute: #555555;
+  
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+body { 
+  margin: 0; 
+  background: var(--cm-cream); 
+  color: var(--cm-black); 
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif; 
+  overflow-x: hidden; 
+}
+
+h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; letter-spacing: -.02em; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; }
+h3 { font-size: 1.3rem; font-weight: 900; }
+p { margin: 0 0 1em; color: var(--mute); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== NAVIGATION ===== */
+nav { position: sticky; top: 0; z-index: 50; background: var(--cm-cream); border-bottom: 3px solid var(--cm-black); }
+.nb { max-width: 1100px; margin: auto; padding: 12px 20px; display: flex; align-items: center; gap: 20px; }
+.logo { font-weight: 900; letter-spacing: .04em; font-size: 1.1rem; color: var(--cm-black); white-space: nowrap; }
+.logo b { display: inline-block; margin-left: 4px; padding: 2px 8px; background: var(--cm-blue); border: 2px solid var(--cm-black); border-radius: 8px; transform: rotate(-2deg); color: #fff; }
+
+.links { display: flex; gap: 6px; flex: 1; align-items: center; justify-content: flex-end; }
+.links > a { padding: 8px 14px; border: 2px solid transparent; border-radius: 12px; color: var(--cm-black); font-weight: 800; font-size: .95rem; transition: .15s; }
+.links > a:hover { background: var(--cm-yellow); border-color: var(--cm-black); }
+.links > a.on { background: var(--cm-blue); color: #fff; border-color: var(--cm-black); box-shadow: 3px 3px 0 var(--cm-black); }
+
+.burger { display: none; width: 44px; height: 44px; margin-left: auto; place-items: center; background: var(--cm-yellow); border: 2px solid var(--cm-black); border-radius: 12px; box-shadow: 3px 3px 0 var(--cm-black); color: var(--cm-black); font-size: 1.2rem; font-weight: 900; cursor: pointer; }
+.burger:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--cm-black); }
+
+/* Standard Buttons */
+.btn-v2 { display: inline-flex; align-items: center; justify-content: center; padding: 15px 24px; border: 3px solid var(--cm-black); border-radius: 16px; font-weight: 900; font-size: 1.05rem; text-decoration: none; color: var(--cm-black); transition: .15s ease; box-shadow: 5px 5px 0 var(--cm-black); cursor: pointer; }
+.btn-v2:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--cm-black); }
+.btn-v2.blue { background: var(--cm-blue); color: #fff; }
+.btn-v2.yellow { background: var(--cm-yellow); color: var(--cm-black); }
+.btn-v2.coral { background: var(--cm-coral); color: #fff; }
+.btn-v2.white { background: var(--cm-white); }
+
+main { max-width: 1100px; margin: auto; padding: 40px 20px 80px; animation: in .3s ease; }
+@keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
+
+/* Cards & Tags */
+.card { background: var(--cm-white); border: 3px solid var(--cm-black); border-radius: 20px; padding: 26px; box-shadow: 6px 6px 0 var(--cm-black); transition: .2s; }
+a.card:hover, .card.h:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--cm-black); }
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.tag { display: inline-block; font-size: .8rem; font-weight: 900; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: 99px; background: var(--cm-grey); color: var(--cm-black); border: 2px solid var(--cm-black); margin-bottom: 15px; }
+
+/* Inputs */
+label { display: block; font-weight: 800; font-size: 1rem; margin: 0 0 8px; }
+input, select { width: 100%; padding: 14px 16px; border: 3px solid var(--cm-black); border-radius: 12px; background: var(--cm-white); color: var(--cm-black); font-family: inherit; font-weight: 700; font-size: 1rem; }
+input:focus, select:focus { outline: none; border-color: var(--cm-blue); box-shadow: 4px 4px 0 var(--cm-blue); }
+
+/* ===== HOMEPAGE ===== */
+.hero-v2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 40px 0 60px; }
+.hero-copy h1 { margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1; font-weight: 900; }
+.hero-copy h1 span { color: var(--cm-blue); }
+.hero-copy p { font-size: 1.15rem; font-weight: 500; margin: 25px 0 30px; max-width: 500px; color: var(--cm-black); }
+.hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+
+.hero-visual { display: flex; flex-direction: column; gap: 15px; }
+.visual-card { border: 3px solid var(--cm-black); border-radius: 20px; padding: 25px; box-shadow: 6px 6px 0 var(--cm-black); font-weight: 900; font-size: 1.4rem; transform: rotate(1deg); }
+.vc-1 { background: var(--cm-yellow); transform: rotate(-2deg); }
+.vc-2 { background: var(--cm-coral); color: white; transform: rotate(1deg); margin-left: 20px; }
+.vc-3 { background: var(--cm-blue); color: white; transform: rotate(-1deg); margin-left: -10px; }
+
+/* ===== EXPLORE BUBBLES ===== */
+.explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
+.bubble { 
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 40px 20px; border: 3px solid var(--cm-black); border-radius: 40px; /* Actual bubbles */
+  box-shadow: 6px 6px 0 var(--cm-black); font-weight: 900; font-size: 1.5rem; 
+  cursor: pointer; transition: .2s; background: var(--cm-white);
+}
+.bubble:hover { transform: translateY(-4px); box-shadow: 8px 8px 0 var(--cm-black); }
+.bubble.blue { background: var(--cm-blue); color: #fff; }
+.bubble.yellow { background: var(--cm-yellow); color: var(--cm-black); }
+.bubble.coral { background: var(--cm-coral); color: #fff; }
+
+.pathway-panel { display: none; background: var(--cm-white); border: 3px solid var(--cm-black); border-radius: 20px; padding: 30px; margin-top: 30px; box-shadow: 6px 6px 0 var(--cm-black); }
+.path-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.path-list a { display: block; padding: 15px; border: 2px solid var(--cm-black); border-radius: 12px; font-weight: 800; background: var(--cm-grey); transition: .15s; }
+.path-list a:hover { background: var(--cm-yellow); transform: translateX(5px); }
+
+/* ===== COURSE PLANNER (1x8) ===== */
+.planner-wrapper { max-width: 600px; margin: 0 auto; }
+.slot { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.slot-num { width: 45px; height: 45px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--cm-black); color: white; font-weight: 900; font-size: 1.2rem; border-radius: 12px; }
+
+/* Responsive adjustments */
+@media(max-width: 860px) {
+  .links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 8px; padding: 16px 20px 20px; background: var(--cm-cream); border-bottom: 3px solid var(--cm-black); }
+  .links.open { display: flex; }
+  .burger { display: grid; }
+  .hero-v2 { grid-template-columns: 1fr; text-align: left; gap: 30px; }
+  .visual-card { margin-left: 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nb">
+    <a href="#/" class="logo">COURSE<b>MAXXING</b></a>
+    <div class="links" id="links">
+      <a href="#/">Home</a>
+      <a href="#/explore">Explore</a>
+      <a href="#/courses">Course Planner</a>
+      <a href="#/top6">Top 6</a>
+      <a href="#/architect">The Architect</a>
+    </div>
+    <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+  </div>
+</nav>
 
-</style></head><body>
-<nav><div class="nb"><a href="#/" class="logo">COURSE<b>MAXXING</b></a>
-<div class="links" id="links"><a href="#/">Home</a><a href="#/explore">Explore</a><a href="#/tools">Tools</a><a href="#/architect">Architect</a><a href="#/portfolio">My Portfolio</a><div class="acct-m" id="acctm"></div></div>
-<div class="acct" id="acct"></div><button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button></div></nav>
 <main id="app"></main>
+
 <script>
-let S={name:'',email:'',grade:11,in:false,target:''};
-try{const x=localStorage.getItem('cm');if(x)S=Object.assign(S,JSON.parse(x))}catch(e){}
-const save=()=>{try{localStorage.setItem('cm',JSON.stringify(S))}catch(e){}};
-const $=id=>document.getElementById(id);
-let chat=[];
-const SOON='<span class="tag">Coming soon</span>';
-const empty=t=>`<div class="empty">${t}</div>`;
-const card=(t,d,h,tag)=>`<${h?'a href="'+h+'"':'div'} class="card ${h?'':'h'}"><div style="margin-bottom:10px">${tag||''}</div><h3>${t}</h3><p style="margin:0">${d}</p></${h?'a':'div'}>`;
-const GP={8:'Discover interests, build strong habits, and understand how courses connect to pathways.',9:'Discover interests, build strong habits, and understand how courses connect to pathways.',10:'Explore pathways and start understanding how Grade 11 and 12 course choices open or close doors.',11:'Focus on course selection, your Top 6, university programs, and academic goals.',12:'Focus on admissions, your Top 6, scholarships, and final decisions about your next step.'};
-const MOCK={default:"This is a placeholder response. The real Architect will be connected to an AI API later and will use your profile.\n\nFor now, a useful starting point: write down your current courses, your marks, and one or two programs you might want. The Top 6 Calculator can show where you stand today.",
-'What should I focus on in Grade 11?':"Placeholder response (AI not connected).\n\nFacts to verify with your school and target universities: which Grade 12 courses are prerequisites for programs you like.\nRecommendation: choose Grade 12 courses with those prerequisites in mind, and track your Top 6 early.",
-'How can I improve my university chances?':"Placeholder response (AI not connected).\n\nI can't state admission requirements without verified data. Once connected, I'll separate verified facts from recommendations, and tailor advice to your marks, activities and goals.",
-"I'm interested in business. What should I look at?":"Placeholder response (AI not connected).\n\nRecommendation: look at the University Explorer for example business programs, then check each school's official site for prerequisites and admission details.",
-"What should I do if I don't know what I want to study?":"Placeholder response (AI not connected).\n\nThat's common. A sensible first step is exploring interests through a credible external assessment, then bringing the results here to discuss possible directions.",
-'Help me plan my next steps.':"Placeholder response (AI not connected).\n\n1. Add your grade and courses.\n2. Calculate your Top 6.\n3. Shortlist programs to research.\n4. Come back and we'll map out what to do next."};
-const SUG=["What should I focus on in Grade 11?","How can I improve my university chances?","I'm interested in business. What should I look at?","What should I do if I don't know what I want to study?","Help me plan my next steps."];
-const R={
-'':()=>`<section class="hero-v2">
+const $ = id => document.getElementById(id);
 
+// --- Explore Logic ---
+function showPath(category) {
+    const p = $('pathway-content');$('pathway-panel').style.display = 'block';
+    
+    let html = '';
+    if (category === 'business') {
+        html = `<h3>Business Pathways</h3><p>Select a pathway to see university examples and required prerequisites.</p>
+        <div class="path-list">
+            <a href="#/universities">Business Administration / BBA →</a>
+            <a href="#/universities">Commerce / Finance →</a>
+            <a href="#/universities">Accounting →</a>
+        </div>`;
+    } else if (category === 'science') {
+        html = `<h3>Science & Health Pathways</h3><p>Select a pathway to see university examples and required prerequisites.</p>
+        <div class="path-list">
+            <a href="#/universities">Life Sciences / Pre-Med →</a>
+            <a href="#/universities">Computer Science →</a>
+            <a href="#/universities">Engineering →</a>
+        </div>`;
+    } else if (category === 'arts') {
+        html = `<h3>Arts & Humanities Pathways</h3><p>Select a pathway to see university examples and required prerequisites.</p>
+        <div class="path-list">
+            <a href="#/universities">Political Science & Law →</a>
+            <a href="#/universities">Psychology →</a>
+            <a href="#/universities">English & History →</a>
+        </div>`;
+    } else {
+        html = `<h3>Not sure yet?</h3><p>That's completely normal. A credible career assessment is coming soon to help you narrow down your interests.</p>`;
+    }
+    p.innerHTML = html;
+    window.scrollTo({ top: $('pathway-panel').offsetTop - 100, behavior: 'smooth' });
+}
+
+// --- Top 6 Calculator Logic ---
+function calcTop6() {
+    const inputs = [...document.querySelectorAll('.mk')].map(i => i.value.trim());
+    const ok = inputs.filter(x => x !== '' && !isNaN(x) && x >= 0 && x <= 100);
+    const bad = inputs.some(x => x !== '' && (isNaN(x) || x < 0 || x > 100));
+    
+    let h;
+    if(bad) {
+        h = '<h3 style="color:var(--cm-coral)">Invalid Number</h3><p>Marks must be numbers from 0 to 100.</p>';
+    } else if (ok.length < 6) {
+        h = `<h3>Waiting for grades... (${ok.length}/6)</h3><p>Enter all six marks to see your average.</p>`;
+    } else {
+        const avg = ok.reduce((s, x) => s + +x, 0) / 6;
+        h = `<h3 style="color:var(--cm-blue); font-size:2rem; margin:0;">${avg.toFixed(1)}%</h3><p style="font-weight:700; margin-top:5px;">Your Top 6 Average</p>`;
+    }
+    $('res').innerHTML = h;
+}
+
+// --- Routes ---
+const R = {
+'': () => `
+<section class="hero-v2">
   <div class="hero-copy">
-    <div class="eyebrow-v2">COURSEMAXXING ✦ FOR STUDENTS</div>
-
     <h1>School doesn't come with an instruction manual.<br><span>So we made one.</span></h1>
-
-    <p>
-      Courses. University. Grades. What's next.
-      Coursemaxxing puts the important stuff in one place so you can actually figure it out.
-    </p>
-
+    <p>Coursemaxxing puts course planning, grade calculations, and university research in one place so you can actually figure out what to do next.</p>
     <div class="hero-actions">
-      <a class="btn-v2 blue" href="#/${S.in?'dashboard':'signup'}">Get Started →</a>
-      <a class="text-link-v2" href="#/explore">Explore Coursemaxxing</a>
+      <a class="btn-v2 blue" href="#/explore">Explore Pathways</a>
+      <a class="btn-v2 white" href="#/courses">Plan Courses</a>
     </div>
   </div>
+  <div class="hero-visual">
+    <div class="visual-card vc-1">1. Explore Universities</div>
+    <div class="visual-card vc-2">2. Check Prerequisites</div>
+    <div class="visual-card vc-3">3. Build Your 8-Course Plan</div>
+  </div>
+</section>
 
-  <div class="hero-board">
-    <div class="board-tape"></div>
+<div class="grid" style="margin-top: 40px;">
+  <div class="card h" onclick="go('top6')" style="cursor:pointer;">
+    <div class="tag">Live Tool</div>
+    <h3>Top 6 Calculator</h3>
+    <p>Calculate your Grade 12 average for university applications.</p>
+  </div>
+  <div class="card h" onclick="go('architect')" style="cursor:pointer;">
+    <div class="tag">In Development</div>
+    <h3>The Architect</h3>
+    <p>Your future AI academic advisor. Coming soon.</p>
+  </div>
+</div>
+`,
 
-    <div class="student-card">
-      <div class="student-top">
-        <span class="mini-label">MY PLAN</span>
-        <span class="status-dot">● ON TRACK</span>
-      </div>
+explore: () => `
+<div style="text-align:center; max-width: 600px; margin: 0 auto 30px;">
+    <h2>What are you interested in?</h2>
+    <p>Select an area below to explore university pathways and see exactly what high school courses you need to get there.</p>
+</div>
+<div class="explore-grid">
+    <div class="bubble blue" onclick="showPath('business')">Business & Commerce</div>
+    <div class="bubble coral" onclick="showPath('science')">Science, Tech & Health</div>
+    <div class="bubble yellow" onclick="showPath('arts')">Arts, Law & Humanities</div>
+    <div class="bubble" onclick="showPath('other')">Not sure yet</div>
+</div>
+<div id="pathway-panel" class="pathway-panel">
+    <div id="pathway-content"></div>
+</div>
+`,
 
-      <h3>Grade ${S.grade}</h3>
-      <p class="board-sub">Your next steps, without the guesswork.</p>
-
-      <div class="mini-stats">
-        <div>
-          <strong>6</strong>
-          <span>Courses</span>
+courses: () => `
+<div class="planner-wrapper">
+    <div style="text-align:center; margin-bottom: 30px;">
+        <h2>Course Planner</h2>
+        <p>Map out your 8 courses for the year. Check with your guidance counsellor to ensure you are hitting all your graduation requirements.</p>
+        <select style="max-width:200px; margin:0 auto; text-align:center;">
+            <option>Grade 9</option>
+            <option>Grade 10</option>
+            <option selected>Grade 11</option>
+            <option>Grade 12</option>
+        </select>
+    </div>
+    
+    <div class="planner-slots">
+        ${[1,2,3,4,5,6,7,8].map(i => `
+        <div class="slot">
+            <div class="slot-num">${i}</div>
+            <select>
+                <option value="">Select a course...</option>
+                <option>ENG3U - English</option>
+                <option>MCR3U - Functions</option>
+                <option>SBI3U - Biology</option>
+                <option>SCH3U - Chemistry</option>
+                <option>SPH3U - Physics</option>
+                <option>BAF3M - Accounting</option>
+                <option>HSP3U - Intro to Anthro/Psych/Soc</option>
+                <option>Spare (Grade 12 only)</option>
+            </option>
+            </select>
         </div>
-        <div>
-          <strong>91%</strong>
-          <span>Top 6</span>
+        `).join('')}
+    </div>
+    <button class="btn-v2 blue" style="width:100%; margin-top:20px;">Save Course Plan (Coming Soon)</button>
+</div>
+`,
+
+top6: () => `
+<div style="max-width: 800px; margin: 0 auto;">
+    <h2 style="text-align:center; margin-bottom:10px;">Top 6 Calculator</h2>
+    <p style="text-align:center; margin-bottom:30px;">Enter your top six Grade 12 U/M level courses. Make sure to include any specific prerequisites your university program requires (like ENG4U).</p>
+    <div class="two">
+        <div class="card">
+            <div class="six">
+                ${[1,2,3,4,5,6].map(i=>`
+                <div>
+                    <label>Course ${i} %</label>
+                    <input class="mk" type="number" placeholder="e.g. 90" oninput="calcTop6()">
+                </div>
+                `).join('')}
+            </div>
         </div>
-        <div>
-          <strong>3</strong>
-          <span>Goals</span>
+        <div class="card" style="display:flex; align-items:center; justify-content:center; text-align:center; background:var(--cm-grey);">
+            <div id="res">
+                <h3>Waiting for grades... (0/6)</h3>
+                <p>Enter all six marks to see your average.</p>
+            </div>
         </div>
-      </div>
-
-      <div class="plan-row">
-        <span class="plan-check">✓</span>
-        <span>Check university requirements</span>
-      </div>
-
-      <div class="plan-row">
-        <span class="plan-check">✓</span>
-        <span>Plan your next courses</span>
-      </div>
-
-      <div class="plan-row pending">
-        <span class="plan-check">→</span>
-        <span>Ask The Architect</span>
-      </div>
     </div>
+</div>
+`,
 
-    <div class="floating-note yellow-note">
-      <span>★</span>
-      Know what you're doing next.
+universities: () => `
+<h2>University Research (Example)</h2>
+<p>Official prerequisites and admission averages must be verified with the university website.</p>
+<div class="grid">
+    <div class="card">
+        <div class="tag yellow">Example Program</div>
+        <h3>Western Ivey (AEO)</h3>
+        <p><strong>Required:</strong> ENG4U + Calculus (MCV4U) or Data (MDM4U)</p>
+        <p><strong>Competitive Avg:</strong> ~93%+</p>
+        <p><strong>Notes:</strong> Heavy emphasis on supplementary leadership essays.</p>
     </div>
-
-    <div class="floating-note coral-note">
-      <span>?</span>
-      “What should I take?”
+    <div class="card">
+        <div class="tag blue">Example Program</div>
+        <h3>McMaster Health Sciences</h3>
+        <p><strong>Required:</strong> ENG4U, Biology (SBI4U), Chemistry (SCH4U), one 4U Math</p>
+        <p><strong>Competitive Avg:</strong> ~90%+ (Supplementary dictates admission)</p>
+        <p><strong>Notes:</strong> Extremely competitive supplementary application required.</p>
     </div>
-  </div>
+</div>
+<button class="btn-v2 white" style="margin-top:20px;" onclick="history.back()">← Back</button>
+`,
 
-</section>
-
-<section class="intro-v2">
-  <div>
-    <div class="eyebrow-v2">WHY COURSEMAXXING</div>
-    <h2>You have questions.<br><span>We help you figure them out.</span></h2>
-  </div>
-
-  <p>
-    High school comes with a ridiculous number of decisions.
-    What courses should I take? What marks do I need?
-    Which university makes sense? What should I be doing right now?
-    Coursemaxxing brings those questions together.
-  </p>
-</section>
-
-<section class="bento-section">
-
-  <div class="section-heading-v2">
-    <div>
-      <div class="eyebrow-v2">YOUR TOOLKIT</div>
-      <h2>Start wherever you are.</h2>
-    </div>
-    <p>Use what you need. Build from there.</p>
-  </div>
-
-  <div class="bento-grid">
-
-    <a class="bento-card architect-card" href="#/architect">
-      <div class="bento-number blue-number">01</div>
-
-      <div class="bento-icon">✦</div>
-
-      <div class="bento-content">
-        <div class="card-tag blue-tag">THE BIG ONE</div>
-        <h3>The Architect</h3>
-        <p>Ask questions. Think through your situation. Get a plan for what to do next.</p>
-        <span class="card-arrow">Open The Architect →</span>
-      </div>
-    </a>
-
-    <a class="bento-card top6-card" href="#/top6">
-      <div class="bento-number yellow-number">02</div>
-
-      <div class="bento-content">
-        <div class="card-tag yellow-tag">LIVE NOW</div>
-        <h3>Top 6 Calculator</h3>
-        <p>See your average. Compare it to your target.</p>
-        <span class="card-arrow">Calculate yours →</span>
-      </div>
-
-      <div class="fake-chart">
-        <div class="chart-bar bar-one"></div>
-        <div class="chart-bar bar-two"></div>
-        <div class="chart-bar bar-three"></div>
-        <div class="chart-bar bar-four"></div>
-        <div class="chart-bar bar-five"></div>
-      </div>
-    </a>
-
-    <a class="bento-card university-card" href="#/universities">
-      <div class="bento-number coral-number">03</div>
-
-      <div class="bento-content">
-        <div class="card-tag coral-tag">EXPLORE</div>
-        <h3>Universities</h3>
-        <p>Start figuring out where your courses and goals could take you.</p>
-        <span class="card-arrow">Explore programs →</span>
-      </div>
-    </a>
-
-    <a class="bento-card course-card" href="#/courses">
-      <div class="bento-number blue-number">04</div>
-
-      <div class="bento-content">
-        <div class="card-tag blue-tag">PLAN AHEAD</div>
-        <h3>Course Planning</h3>
-        <p>Map out the courses that make sense for your path.</p>
-        <span class="card-arrow">Plan your courses →</span>
-      </div>
-    </a>
-
-    <a class="bento-card strategy-card" href="#/tools">
-      <div class="bento-number yellow-number">05</div>
-
-      <div class="bento-content">
-        <div class="card-tag yellow-tag">GET BETTER</div>
-        <h3>School & Study Strategies</h3>
-        <p>Practical ways to study smarter and make school easier to manage.</p>
-        <span class="card-arrow">See strategies →</span>
-      </div>
-    </a>
-
-    <a class="bento-card portfolio-card" href="#/portfolio">
-      <div class="bento-number coral-number">06</div>
-
-      <div class="bento-content">
-        <div class="card-tag coral-tag">YOUR STORY</div>
-        <h3>Student Portfolio</h3>
-        <p>Keep track of your courses, marks, goals, activities and achievements.</p>
-        <span class="card-arrow">View portfolio →</span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<section class="grade-v2">
-  <div class="grade-copy">
-    <div class="eyebrow-v2">START WHERE YOU ARE</div>
-    <h2>Your grade changes the game.</h2>
-    <p>Choose your grade to see what should matter most right now.</p>
-  </div>
-
-  <div class="grade-buttons-v2">
-    ${[8,9,10,11,12].map(g=>`
-      <button
-        class="grade-pill ${S.grade==g?'selected':''}"
-        onclick="S.grade=${g};save();go('${S.in?'dashboard':'signup'}')"
-      >
-        <span>Grade</span>
-        <strong>${g}</strong>
-      </button>
-    `).join('')}
-  </div>
-</section>
-
-<section class="founder-v2">
-  <div class="founder-label">
-    <div class="eyebrow-v2">WHY I BUILT THIS</div>
-    <div class="founder-star">✦</div>
-  </div>
-
-  <div class="founder-copy">
-    <h2>I had someone to ask.<br><span>Not everyone does.</span></h2>
-
-    <p>
-      Coursemaxxing started from my own experience as a high school student.
-      I've been fortunate to have an older sibling who could help me navigate
-      the questions that come with high school — what courses to take,
-      how to prepare for university, what opportunities matter, and what
-      I should actually be doing to build my future.
-    </p>
-
-    <p>
-      But not every student has someone they can ask all of those questions to.
-      I wanted to build the resource I wish every student had:
-      one place to figure things out and make smarter decisions.
-    </p>
-  </div>
-</section>
-
-<section class="final-cta-v2">
-  <div class="cta-sticker">LET'S FIGURE IT OUT.</div>
-  <h2>Your future is too important<br>to just <span>wing it.</span></h2>
-  <p>Start building your plan with Coursemaxxing.</p>
-  <a class="btn-v2 black" href="#/signup">Get Started →</a>
-</section>`,
-signup:()=>auth(1),login:()=>auth(0),
-dashboard:()=>{if(!S.in)return auth(0);return `<h1 style="font-size:2rem">Welcome, ${esc(S.name||'Student')}</h1><p>${GP[S.grade]}</p>
-<div class="two" style="margin:24px 0"><div class="card"><h3>Academic snapshot</h3><div class="stat"><b>Grade</b><span>${S.grade}</span></div><div class="stat"><b>Average</b><span>Not added</span></div><div class="stat"><b>Target</b><span>${S.target?S.target+'%':'Not added'}</span></div><div class="stat"><b>University interests</b><span>Not added</span></div></div><div class="card"><h3>Profile</h3>${empty('Add your information to personalize your Coursemaxxing experience.')}<div style="margin-top:12px"><a class="btn sm" href="#/profile">Edit profile</a></div></div></div>
-<div class="grid">${card('Explore','Discover guidance.','#/explore')}${card('Tools','Calculators and strategies.','#/tools')}${card('The Architect','Ask for strategic advice.','#/architect')}${card('My Portfolio','Your academic story.','#/portfolio')}${card('University Planning','Example programs.','#/universities')}${card('Course Planning','Plan your courses.','#/courses')}</div>`},
-explore:()=>`<h1 style="font-size:2.2rem">Explore</h1><p>A hub for discovering what matters at your stage.</p><div class="grid">${card('Grade guidance',GP[S.grade],'#/dashboard')}${card('University planning','Example programs and what to research.','#/universities')}${card('Courses','Plan Grades 9–12.','#/courses')}${card('Careers','Explore directions with an external assessment.','#/tools','')}${card('Academic strategies','Studying and school strategies.','#/tools')}</div>
-<section class="sec card"><h3>Interest exploration</h3><p>Coursemaxxing does not offer its own validated assessment. Eventually you'll be able to: 1) take a credible external interest/career assessment, 2) bring your results here, 3) use The Architect to interpret them, 4) explore fields and programs.</p>${SOON}</section>`,
-tools:()=>`<h1 style="font-size:2.2rem">Tools</h1><p>Practical tools and content for students.</p><div class="grid">${card('Top 6 Calculator','Works now.','#/top6','<span class="tag g">Live</span>')}${['Studying','School Strategies','University Planning','Course Planning','Academic Improvement'].map(t=>card(t,'Content in development.','',S.in?SOON:'<span class="tag">Sign up to view</span>')).join('')}</div>`,
-top6:()=>`<h1 style="font-size:2.2rem">Top 6 Calculator</h1><p>Enter six marks to calculate your average.</p><div class="two"><div class="card"><div class="six">${[1,2,3,4,5,6].map(i=>`<div><label>Course ${i}</label><input class="mk" inputmode="decimal" placeholder="e.g. 90" oninput="calc()"></div>`).join('')}</div><div class="fld" style="margin-top:16px"><label>Target % (optional)</label><input id="tg" inputmode="decimal" value="${S.target}" oninput="S.target=this.value;save();calc()"></div></div><div class="card res" id="res"></div></div><p style="margin-top:12px;font-size:.9rem">Saved to your profile later (local only for now).</p>`,
-architect:()=>`<h1 style="font-size:2.2rem">The Architect</h1><p>Helps you think through academics, university, courses, studying, and future plans. <span class="tag">Placeholder responses</span></p><div class="row" style="margin-bottom:14px">${SUG.map((q,i)=>`<button class="chip" onclick="$('ci').value=SUG[${i}];$('ci').focus()">${q}</button>`).join('')}</div><div class="card"><div class="chat" id="chat"></div><div class="row" style="margin-top:14px;flex-wrap:nowrap"><input id="ci" placeholder="Ask The Architect…" onkeydown="if(event.key==='Enter')send()"><button class="btn" onclick="send()">Send</button></div><div style="margin-top:10px"><button class="chip" onclick="chat=[];draw()">Clear conversation</button></div></div>`,
-universities:()=>`<h1 style="font-size:2.2rem">University Exploration</h1><p>Example programs only. Unverified details are marked Coming Soon.</p><div class="grid">${['Western / Ivey','Laurier','Other Ontario business options'].map(n=>`<div class="card"><h3>${n}</h3>${['Admission average','Required courses','Prerequisites','Co-op','Approximate cost','Supplementary application','Scholarships'].map(f=>`<div class="stat"><b>${f}</b>${SOON}</div>`).join('')}</div>`).join('')}</div>`,
-courses:()=>`<h1 style="font-size:2.2rem">Course Planning</h1><p>${SOON} A prototype of your future planner.</p>${empty("You haven't added your courses yet.")}<div class="grid" style="margin-top:16px">${[1,2,3,4,5,6,7,8].map(i=>`<div class="card mute"><h3>Course ${i}</h3><p style="margin:0">Select course</p></div>`).join('')}</div>`,
-portfolio:()=>`<h1 style="font-size:2.2rem">My Portfolio</h1><p>Your portfolio will appear here once you start building it.</p><div class="grid">${[['Academic','Grade, courses, marks, strengths, weaknesses'],['Experience','Extracurriculars, volunteer, work'],['Achievements','Awards, certifications, competitions'],['Future','Goals, university targets, career interests']].map(c=>card(c[0],c[1],'',SOON)).join('')}</div>`,
-profile:()=>`<h1 style="font-size:2.2rem">Profile</h1><div class="card" style="max-width:520px"><div class="fld"><label>Name</label><input id="pn" value="${esc(S.name)}"></div><div class="fld"><label>Email</label><input id="pe" value="${esc(S.email)}"></div><div class="fld"><label>Grade</label><select id="pg">${[8,9,10,11,12].map(g=>`<option ${S.grade==g?'selected':''}>${g}</option>`).join('')}</select></div><div class="fld"><label>Academic information</label>${empty('Not added')}</div><div class="fld"><label>Interests / University interests</label>${empty('Not added')}</div><div class="row"><button class="btn" onclick="S.name=$('pn').value;S.email=$('pe').value;S.grade=+$('pg').value;save();acct();go('dashboard')">Save</button><button class="btn o" disabled title="Not connected in V1">Delete account (not connected)</button></div></div>`
+architect: () => `
+<div class="card" style="text-align:center; max-width:600px; margin: 0 auto; padding: 50px 30px;">
+    <div class="tag blue">In Development</div>
+    <h1 style="margin: 20px 0;">The Architect</h1>
+    <p style="font-size: 1.1rem; font-weight: 500;">The Architect is being designed as your personal AI academic advisor. Eventually, it will help you calculate grades, map prerequisites, and plan your high school career based on verified Ontario data.</p>
+    <p><strong>Status:</strong> Securing API integrations and verifying database logic.</p>
+    <button class="btn-v2 black" style="margin-top:20px;" onclick="go('')">Return Home</button>
+</div>
+`
 };
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function auth(su){return `<div class="form card"><h2>${su?'Create your profile':'Log in'}</h2>${su?`<div class="fld"><label>First name / nickname</label><input id="an"></div>`:''}<div class="fld"><label>Email</label><input id="ae" type="email"></div><div class="fld"><label>Password</label><input type="password"></div>${su?`<div class="fld"><label>Grade</label><select id="ag">${[8,9,10,11,12].map(g=>`<option ${S.grade==g?'selected':''}>${g}</option>`).join('')}</select></div>`:''}<button class="btn" style="width:100%" onclick="doAuth(${su})">${su?'Sign up':'Log in'}</button><p style="margin:14px 0 0;font-size:.85rem">Mock sign-in stored locally. Supabase auth connects later.</p></div>`}
-function doAuth(su){if(su){S.name=$('an').value;S.grade=+$('ag').value}S.email=$('ae').value;S.in=true;save();acct();go('dashboard')}
-function acct(){const h=S.in?`<a class="btn-v2 sm blue" href="#/profile">${esc(S.name||'Profile')}</a>`:`<a class="btn-v2 sm white" href="#/login">Log in</a><a class="btn-v2 sm blue" href="#/signup">Sign up</a>`;$('acct').innerHTML=h;$('acctm').innerHTML=h}
-function calc(){const v=[...document.querySelectorAll('.mk')].map(i=>i.value.trim()),ok=v.filter(x=>x!==''&&!isNaN(x)&&x>=0&&x<=100),bad=v.some(x=>x!==''&&(isNaN(x)||x<0||x>100));let h;
-if(bad)h='<small>YOUR TOP 6</small><div class="big">—</div><p>Marks must be numbers from 0 to 100.</p>';
-else if(ok.length<6)h=`<small>YOUR TOP 6</small><div class="big">—</div><p>Enter all six marks (${ok.length}/6).</p><div class="bar"><i style="width:${ok.length/6*100}%"></i></div>`;
-else{const a=ok.reduce((s,x)=>s+ +x,0)/6,t=parseFloat(S.target);h=`<small>YOUR TOP 6</small><div class="big">${a.toFixed(1)}%</div>`+(isNaN(t)?'<p>Target: Not selected</p>':`<div class="stat"><b>Current</b><span>${a.toFixed(1)}%</span></div><div class="stat"><b>Target</b><span>${t}%</span></div><div class="stat"><b>Difference</b><span>${Math.abs(t-a).toFixed(1)} points ${a>=t?'above':'below'}</span></div>`)}
-$('res').innerHTML=h}
-function draw(){const c=$('chat');if(!c)return;c.innerHTML=chat.length?chat.map(m=>`<div class="m ${m.r}">${esc(m.t)}</div>`).join(''):empty('Ask a question or pick a suggestion above.');c.scrollTop=c.scrollHeight}
-function send(){const i=$('ci'),t=i.value.trim();if(!t)return;chat.push({r:'u',t});i.value='';draw();setTimeout(()=>{chat.push({r:'a',t:MOCK[t]||MOCK.default});draw()},500)}
-function go(p){location.hash='#/'+p}
-function route(){const p=(location.hash.replace('#/','')||'');const f=R[p]||R[''];$('app').innerHTML=f();$('app').style.animation='none';$('app').offsetHeight;$('app').style.animation='';$('links').classList.remove('open');
-document.querySelectorAll('.links>a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+p));window.scrollTo(0,0);if(p==='top6')calc();if(p==='architect')draw()}
-window.addEventListener('hashchange',route);acct();route();
-</script></body></html>
+
+function go(p) { location.hash = '#/' + p; }
+function route() {
+    const p = (location.hash.replace('#/', '') || '');
+    const f = R[p] || R[''];
+    $('app').innerHTML = f();$('links').classList.remove('open');
+    document.querySelectorAll('.links>a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#/' + p));
+    window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
